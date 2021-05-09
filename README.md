@@ -49,3 +49,4 @@ const theme = extendTHeme({
 - test-net-chessout: `erd1ytfzuxqna50rush9g9r8rfmxv9dyzetq2my4dfq8w0t4cv4lngvsd5us2n`
 - test-net-bogdan: `erd1mhhnd3ux2duwc9824dhelherdj3gvzn04erdw29l8cyr5z8fpa7quda68z`
 - test-net-user: `erd1f740t3vah0mg9qmv28q3lfwkj593nnma34q9jevzs30pa0sku4cqnjj2mk`
+- contract-address: `erd1qqqqqqqqqqqqqpgqy3ewcgq5et7kaprnrjrvpdv6qwkedss6d8sstpw07p`

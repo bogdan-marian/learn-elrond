@@ -3,7 +3,7 @@ ADDRESS=$(erdpy data load --key=address-testnet)
 DEPLOY_TRANSACTION=$(erdpy data load --key=deployTransaction-testnet)
 DEPLOY_ARGUMENTS="12 42000000"
 DEPLOY_GAS="80000000"
-PROXY=https://testnet-api.elrond.com
+PROXY="https://testnet-gateway.elrond.com"
 
 deploy() {
     erdpy --verbose contract deploy --project=${PROJECT} --recall-nonce --pem=${ALICE} \
