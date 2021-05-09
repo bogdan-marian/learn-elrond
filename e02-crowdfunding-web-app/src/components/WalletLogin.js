@@ -56,12 +56,8 @@ const WalletLogin = () => {
     <div className="col-12 col-md-8 col-lg-5 mx-auto login-card__container">
       <div className="card shadow-sm rounded p-4 border-0">
         <div className="card-body text-center">
-          <h2 className="mb-3">Wallet</h2>
 
-          <p className="mb-3">
-            Login with keystore file.
-            <br /> Login with:
-          </p>
+          
 
           <Button onClick={() => handleOnClick()}> Open Test-Net Wallet</Button>
           

@@ -42,6 +42,14 @@ const theme = extendTHeme({
 })
 ```
 
+## elrond API notes
+
+
+Take a look at:
+
+https://docs.elrond.com/integrators/querying-the-blockchain/
+
+https://api-docs.elrond.com/
 
 
 ### my wallet addresses
