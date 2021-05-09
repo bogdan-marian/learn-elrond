@@ -18,7 +18,7 @@ I have some notes for create react app but that is it.
 ### setting up a new react project
 
 ```bash
-npx create-react-app elrond-web-app
+npx create-react-app e02-crowdfunding-web-app
 ```
 What to remove
 - App.css
