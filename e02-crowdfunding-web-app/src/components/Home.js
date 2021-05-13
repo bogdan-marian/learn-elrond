@@ -8,6 +8,7 @@ import { Button } from "@chakra-ui/button";
 
 const Home = () => {
   const { address } = useElrondContext();
+  const elrondDispatch = useElrondDispatch();
   const [myFunds, setMyFunds] = useState("---");
 
   useEffect(async () => {
@@ -18,9 +19,9 @@ const Home = () => {
     setMyFunds(balance);
   }, []);
 
-  function logOut() {
+  const  logOut = ()=> {
     console.log("Time to logout");
-    useElrondDispatch({ type: "logout" });
+    elrondDispatch({ type: "logout" });
   }
 
   return (
