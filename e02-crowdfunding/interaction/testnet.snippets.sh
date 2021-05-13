@@ -30,6 +30,7 @@ status() {
 }
 
 currentFunds() {
+    echo ${ADDRESS}
     erdpy --verbose contract query ${ADDRESS} --function="currentFunds" --proxy=${PROXY}
 }
 
