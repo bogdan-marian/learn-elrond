@@ -58,3 +58,9 @@ https://api-docs.elrond.com/
 - test-net-bogdan: `erd1mhhnd3ux2duwc9824dhelherdj3gvzn04erdw29l8cyr5z8fpa7quda68z`
 - test-net-user: `erd1f740t3vah0mg9qmv28q3lfwkj593nnma34q9jevzs30pa0sku4cqnjj2mk`
 - contract-address: `erd1qqqqqqqqqqqqqpgqy3ewcgq5et7kaprnrjrvpdv6qwkedss6d8sstpw07p`
+
+
+
+## 002 learn elrond part 2
+
+- [ ] add close wallet button
