@@ -1,8 +1,34 @@
 # learn-elrond
 
-- demo 
+## Learn to code for Elrond (part 2)
 
-## the simple part
+- [ ] add close wallet button
+- [ ] add denominate components
+- [ ] add contract code
+- [ ] check the contract balance
+- [ ] check using test-net that all works
+  - [ ] something was wrong with ALICE
+
+
+
+
+
+
+Support me:
+Maiar Herotag: @bogdanoloeriu
+Referral link: https://get.maiar.com/referral/u9sk4wrnt0
+
+
+### my wallet addresses
+
+- test-net-chessout: `erd1ytfzuxqna50rush9g9r8rfmxv9dyzetq2my4dfq8w0t4cv4lngvsd5us2n`
+- test-net-bogdan: `erd1mhhnd3ux2duwc9824dhelherdj3gvzn04erdw29l8cyr5z8fpa7quda68z`
+- test-net-user: `erd1f740t3vah0mg9qmv28q3lfwkj593nnma34q9jevzs30pa0sku4cqnjj2mk`
+- contract-address: `erd1qqqqqqqqqqqqqpgq3wltgm6g8n6telq3wz2apgjqcydladdtu4cq3ch0l0`
+
+
+
+## Learn to code for Elrond (part 1)
 - setup workspace: 
   - use setup workspace command 
   - use crowd funding template
@@ -52,21 +78,9 @@ https://docs.elrond.com/integrators/querying-the-blockchain/
 https://api-docs.elrond.com/
 
 
-### my wallet addresses
-
-- test-net-chessout: `erd1ytfzuxqna50rush9g9r8rfmxv9dyzetq2my4dfq8w0t4cv4lngvsd5us2n`
-- test-net-bogdan: `erd1mhhnd3ux2duwc9824dhelherdj3gvzn04erdw29l8cyr5z8fpa7quda68z`
-- test-net-user: `erd1f740t3vah0mg9qmv28q3lfwkj593nnma34q9jevzs30pa0sku4cqnjj2mk`
-- contract-address: `erd1qqqqqqqqqqqqqpgq3wltgm6g8n6telq3wz2apgjqcydladdtu4cq3ch0l0`
 
 
 
 
-## Learn to code for Elrond (part 2)
 
-- [ ] add close wallet button
-- [ ] add denominate components
-- [ ] add contract code
-- [ ] check the contract balance
-- [ ] check using test-net that all works
-  - [ ] something was wrong with ALICE
+
