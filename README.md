@@ -62,6 +62,11 @@ https://api-docs.elrond.com/
 
 
 
-## 002 learn elrond part 2
+## Learn to code for Elrond (part 2)
 
 - [ ] add close wallet button
+- [ ] add denominate components
+- [ ] add contract code
+- [ ] check the contract balance
+- [ ] check using test-net that all works
+  - [ ] something was wrong with ALICE
