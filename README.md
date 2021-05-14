@@ -11,12 +11,22 @@
 
 
 
-
-
+This is part two of my journey of learning how to code for Elrond
 
 Support me:
 Maiar Herotag: @bogdanoloeriu
 Referral link: https://get.maiar.com/referral/u9sk4wrnt0
+
+Git repo: https://github.com/bogdan-marian/learn-elrond
+Git start commit: bf6db8222c7be885bd766a0647408e8b4b317ee8
+Git end commit: beeaf907596eb37a2f3f604cc4e6ba3cee247f74
+
+Audio
+Over You - Atch https://soundcloud.com/atch-music
+Creative Commons — Attribution 3.0 Unported — CC BY 3.0
+Free Download / Stream: http://bit.ly/_over-you
+Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
+
 
 
 ### my wallet addresses
