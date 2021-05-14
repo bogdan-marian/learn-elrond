@@ -9,8 +9,6 @@
 - [ ] check using test-net that all works
   - [ ] something was wrong with ALICE
 
-
-
 This is part two of my journey of learning how to code for Elrond
 
 Support me:
@@ -27,7 +25,17 @@ Creative Commons — Attribution 3.0 Unported — CC BY 3.0
 Free Download / Stream: http://bit.ly/_over-you
 Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
 
-
+-- Contents of this video --------
+00:00 - Intro
+01:19 - Close the wallet
+06:14 - Deal with eslint (BigInt not defined)
+08:53 - Denominate the wallet balance
+15:00 - Add the contract interaction code
+21:38 - Discovering that bite code is part of contract response
+23:00 - Minor refactoring
+26:28 - Check contract balance
+30:00 - Testing (Alice does not like me)
+34:00 - Thank you for watching
 
 ### my wallet addresses
 
@@ -36,18 +44,17 @@ Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
 - test-net-user: `erd1f740t3vah0mg9qmv28q3lfwkj593nnma34q9jevzs30pa0sku4cqnjj2mk`
 - contract-address: `erd1qqqqqqqqqqqqqpgq3wltgm6g8n6telq3wz2apgjqcydladdtu4cq3ch0l0`
 
-
-
 ## Learn to code for Elrond (part 1)
-- setup workspace: 
-  - use setup workspace command 
+
+- setup workspace:
+  - use setup workspace command
   - use crowd funding template
-  - run the 
+  - run the
   - use the react template: https://github.com/ElrondNetwork/starter-dapp
 
-
 ## the hard part (hacking our way through)
-I have some notes for create react app but that is it. 
+
+I have some notes for create react app but that is it.
 
 ## log and snippets
 
@@ -56,41 +63,36 @@ I have some notes for create react app but that is it.
 ```bash
 npx create-react-app e02-crowdfunding-web-app
 ```
+
 What to remove
+
 - App.css
 - index.css
 - logo
 - App.test.js
-From App.js
+  From App.js
 - Just live a single div
-From index.js
+  From index.js
 - remove idex.css reference
 
 Better theam
+
 - Add chakra-ui
-- customize theme 
+- customize theme
 - dark theme
+
 ```javascript
 const theme = extendTHeme({
-  config:{
-    initialColorMode: 'dark'
-  }
-})
+  config: {
+    initialColorMode: "dark",
+  },
+});
 ```
 
 ## elrond API notes
-
 
 Take a look at:
 
 https://docs.elrond.com/integrators/querying-the-blockchain/
 
 https://api-docs.elrond.com/
-
-
-
-
-
-
-
-
