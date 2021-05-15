@@ -7,6 +7,8 @@ import axios from "axios";
 import { Button } from "@chakra-ui/button";
 import Denominate from "./Denominate";
 import { addresses } from "../contracts";
+
+import { useNavigate } from "react-router-dom";
 const crowdAddress = addresses.crowdfunding_testnet;
 
 async function getBalance(address) {
@@ -35,6 +37,8 @@ const Home = () => {
     });
   }, []);
 
+  const navigate = useNavigate();
+
   const logOut = () => {
     console.log("Time to logout");
     elrondDispatch({ type: "logout" });
@@ -42,18 +46,22 @@ const Home = () => {
 
   return (
     <div style={{ padding: 20 }}>
-      <Heading>Hello home</Heading>
+      <Heading>Hello Elrond Crowdfund</Heading>
       <div>You are now connected to your wallet</div>
       <div>Elrond address: {address}</div>
       <div>
         My Balance:
         <Denominate value={myFunds} showLastNonZeroDecimal={true} />
-      </div><div>
+      </div>
+      <div>
         Crowd balance:
         <Denominate value={crowdFunds} showLastNonZeroDecimal={true} />
       </div>
       <div style={{ padding: 20 }}>
-        <Button onClick={() => logOut()}>Close Wallet</Button>
+        <Button onClick={() => logOut()} margin="2">
+          Close Wallet
+        </Button>
+        <Button onClick={() => navigate("/sendfunds")}>Send funds</Button>
       </div>
     </div>
   );

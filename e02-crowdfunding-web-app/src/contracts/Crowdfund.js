@@ -19,11 +19,12 @@ export default class Crowdfund {
   proxyProvider: ProxyProvider;
   signerProvider?: IDappProvider; */
 
-  constructor(contractAddress = "", provider, signer) {
+  constructor(contractAddress = "", provider, signer, nominatedValue) {
     const address = new Address(contractAddress);
     this.contract = new SmartContract({ address });
     this.proxyProvider = provider;
     this.signerProvider = signer;
+    this.nominatedValue = nominatedValue;
   }
 
   async currentFunds() {
@@ -63,7 +64,7 @@ export default class Crowdfund {
 
     let transaction = new Transaction({
       receiver: this.contract.getAddress(),
-      value: new Balance(BigInt(3)),
+      value: new Balance(BigInt(this.nominatedValue)),
       gasLimit: new GasLimit(10000000),
       data: payload,
     });
