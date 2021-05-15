@@ -49,6 +49,7 @@ const Home = () => {
       <Heading>Hello Elrond Crowdfund</Heading>
       <div>You are now connected to your wallet</div>
       <div>Elrond address: {address}</div>
+      <div>-------------</div>
       <div>
         My Balance:
         <Denominate value={myFunds} showLastNonZeroDecimal={true} />
