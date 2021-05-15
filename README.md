@@ -38,8 +38,9 @@ Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
 34:00 - Thank you for watching
 
 ## part 3
+Learn to code for Elrond (part 3)
 
-This is part three of my journey of learning how to code for Elrond.
+This is part three of my journey of learning how to code for Elrond. The format is way more condensed and also very exiting. This is where you will learn how to send funds.
 
 Support me:
 Maiar Herotag: @bogdanoloeriu
@@ -58,10 +59,10 @@ Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
 
 -- Contents of this video --------
 00:00 - Intro
-00:00 - Demo
-00:00 - React part
-00:00 - How to send funds
-00:00 - Thank you for watching
+00:30 - Demo  
+02:26 - React part
+05:03 - How to send funds
+11:57 - Thank you for watching
 
 ### audio
 https://www.youtube.com/watch?v=AYH71Q6i_uY&list=PLPcexzYkOpPwelvlPQSqge9vSwExWFiEm&index=15
