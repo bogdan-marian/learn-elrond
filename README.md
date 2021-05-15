@@ -37,6 +37,25 @@ Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
 30:00 - Testing (Alice does not like me)
 34:00 - Thank you for watching
 
+## part 3
+
+This is part three of my journey of learning how to code for Elrond.
+
+Support me:
+Maiar Herotag: @bogdanoloeriu
+Referral link: https://get.maiar.com/referral/u9sk4wrnt0
+
+Git project: https://github.com/bogdan-marian/learn-elrond
+Git start commit: b48a2108ba694fbd4c4d1537b377a6823226ace4
+Git end commit: 199f01076f8e9a0f9d2877680700ff1c96213759
+Git sow diff: https://github.com/bogdan-marian/learn-elrond/compare/b48a2108ba694fbd4c4d1537b377a6823226ace4..199f01076f8e9a0f9d2877680700ff1c96213759
+
+-- Contents of this video --------
+00:00 - Intro
+00:00 - Demo
+00:00 - How to send funds
+00:00 - Thank you for watching
+
 ### my wallet addresses
 
 - test-net-chessout: `erd1ytfzuxqna50rush9g9r8rfmxv9dyzetq2my4dfq8w0t4cv4lngvsd5us2n`
