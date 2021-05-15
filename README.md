@@ -40,7 +40,7 @@ Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
 ## part 3
 Learn to code for Elrond (part 3)
 
-This is part three of my journey of learning how to code for Elrond. The format is way more condensed and also very exiting. This is where you will learn how to send funds.
+This is part three of my journey of learning how to code for Elrond. The format is way more condensed and also very exciting. This is where you will learn how to send funds.
 
 Support me:
 Maiar Herotag: @bogdanoloeriu
