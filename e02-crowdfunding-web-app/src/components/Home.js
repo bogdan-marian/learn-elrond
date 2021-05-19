@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import WalletLogin from "./WalletLogin";
-import { Heading } from "@chakra-ui/layout";
+import { Box, Heading } from "@chakra-ui/react";
 
 import { useElrondContext, useElrondDispatch } from "../context";
 import axios from "axios";
@@ -58,12 +58,13 @@ const Home = () => {
         Crowd balance:
         <Denominate value={crowdFunds} showLastNonZeroDecimal={true} />
       </div>
-      <div style={{ padding: 20 }}>
-        <Button onClick={() => logOut()} margin="2">
-          Close Wallet
+      <Box>
+        <Button onClick={() => logOut()}>Close Wallet</Button>
+        <Button onClick={() => navigate("/sendfunds")} mr="2" ml="2">
+          Send funds
         </Button>
-        <Button onClick={() => navigate("/sendfunds")}>Send funds</Button>
-      </div>
+        <Button onClick={() => navigate("/deploy")}>Deploy new contract</Button>
+      </Box>
     </div>
   );
 };

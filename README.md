@@ -1,5 +1,23 @@
 # learn-elrond
 
+## question: How to deploy a contract
+Is not possible to use the TestNet dapp to sign deployment transactions?
+
+I'm still struggling with figuring out how to deploy a contract using React. 
+The examples from here in case of the web wallet to not cover this particular use case. 
+https://github.com/ElrondNetwork/elrond-sdk/blob/development/erdjs/src/smartcontracts/smartContract.dev.net.spec.ts
+- In React web in order to read a binary file and not be modified on deploy you place the file in the `/public` folder. (I still do not know how to do this with react native)
+- The provide tests only show how to load the wasm code and deploy the contract using the "fs" library. The fs library is not available in the browser so I have loaded the contract by using the web and hard coding temporary the contract served by the '/public' folder. 
+- What I get in response from testnet-wallet.elrond.com is a `413 (Request Entity Too large) 
+ 
+
+The request url 
+https://testnet-wallet.elrond.com/hook/transaction?receiver=erd1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq6gq4hu&value=0&gasLimit=3000000&gasPrice=1000000000&data=0061736d0100000001601160047f7f7f7f0060027f7f017f600  etc etc ..... @0100&callbackUrl=http://localhost:3000/deploy
+
+Thank you for any feedback. 
+
+
+
 ## Learn to code for Elrond (part 2)
 
 - [ ] add close wallet button

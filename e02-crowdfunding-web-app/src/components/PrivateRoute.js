@@ -6,6 +6,7 @@ import Home from "./Home";
 
 import { useElrondContext } from "../context";
 import SendFunds from "./SendFunds";
+import Deploy from "./Deploy";
 
 const PrivateRoute = () => {
   const { loggedIn } = useElrondContext();
@@ -17,7 +18,8 @@ const PrivateRoute = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/sendfunds" element={<SendFunds/>} />
+      <Route path="/sendfunds" element={<SendFunds />} />
+      <Route path="/deploy" element={<Deploy />} />
     </Routes>
   );
 };
