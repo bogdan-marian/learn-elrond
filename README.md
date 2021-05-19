@@ -1,7 +1,7 @@
 # learn-elrond
 
-## question: How to deploy a contract
-Is not possible to use the TestNet dapp to sign deployment transactions?
+## question: How to deploy a contract from React
+Is possible to use the web wallet to sign also deployment transactions?
 
 I'm still struggling with figuring out how to deploy a contract using React. 
 The examples from here in case of the web wallet to not cover this particular use case. 
@@ -14,8 +14,25 @@ https://github.com/ElrondNetwork/elrond-sdk/blob/development/erdjs/src/smartcont
 The request url 
 https://testnet-wallet.elrond.com/hook/transaction?receiver=erd1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq6gq4hu&value=0&gasLimit=3000000&gasPrice=1000000000&data=0061736d0100000001601160047f7f7f7f0060027f7f017f600  etc etc ..... @0100&callbackUrl=http://localhost:3000/deploy
 
-Thank you for any feedback. 
 
+
+This is the current commit that shows what I tried to do. https://github.com/bogdan-marian/learn-elrond/commit/cc47f03cfa67dfc9267da4c04e2630cf38f35e30
+
+
+If you want to test the project ans checkout I'm trying to do 
+```
+git clone git@github.com:bogdan-marian/learn-elrond.git
+git@github.com:bogdan-marian/learn-elrond.git
+git checkout 003-question-deploy-smart-contrac
+yarn install
+yarn start
+# Open Test-Net Wallet
+# Deploy new contract
+# Deploy contract
+# You get the 413 Error
+```
+
+Thank you for any feedback. 
 
 
 ## Learn to code for Elrond (part 2)
