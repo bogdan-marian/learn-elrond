@@ -24,7 +24,8 @@ async function loadContractCode() {
   //let buffer = await fs.readFile(fileName);
   console.log("fileName", fileName);
   //return Code.fromFile("./e05-crowdfunding.wasm");
-  return Code.fromUrl("http://localhost:3000/e05-crowdfunding.wasm");
+  //return Code.fromUrl("http://localhost:3000/e05-crowdfunding.wasm");
+  return Code.fromUrl("http://localhost:3000/e01-adder.wasm");
 }
 
 export async function deployContract(proxyProvider, signerProvider) {
@@ -35,7 +36,7 @@ export async function deployContract(proxyProvider, signerProvider) {
     gasLimit: new GasLimit(3000000),
   });
 
-  console.log(transactionDeploy)
+  console.log(transactionDeploy);
   setItem("transaction_identifier", true, 120);
   let result = await signerProvider.sendTransaction(transactionDeploy);
   console.log(result);
