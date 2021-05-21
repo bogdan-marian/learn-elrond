@@ -33,7 +33,7 @@ export async function deployContract(proxyProvider, signerProvider) {
 
   let transactionDeploy = contract.deploy({
     code: await loadContractCode(),
-    gasLimit: new GasLimit(3000000),
+    gasLimit: new GasLimit(20000000),
   });
 
   console.log(transactionDeploy);
