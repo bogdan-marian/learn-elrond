@@ -1,6 +1,6 @@
 # learn-elrond
 
-## how do you deploy smart contracts at massive scale
+## how do you deploy smart contracts at massive scale (part 4)
 
 - [ ] intro
 - [ ] explain the problem
@@ -11,7 +11,6 @@
   - [ ] docker file
   - [ ] the PROJECT env value
 - [ ] initial attempt
-
 
 ## run snippets
 
