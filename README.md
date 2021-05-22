@@ -1,5 +1,8 @@
 # learn-elrond
 
+## how to scale deployment of smart contracts
+
+
 ## question: How to deploy a contract from React
 Is possible to use the web wallet to sign also deployment transactions?
 
