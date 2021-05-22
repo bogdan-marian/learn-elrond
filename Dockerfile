@@ -85,22 +85,17 @@ ENV PATH="/home/ubuntu/elrondsdk:$PATH"
 
 # clone the project
 
-ADD mycontract /home/ubuntu/mycontract
+ADD e02-crowdfunding /home/ubuntu/mycontract
 RUN sudo chown -R ubuntu /home/ubuntu/*
 WORKDIR /home/ubuntu/mycontract
 RUN erdpy contract build
 
 WORKDIR /home/ubuntu
 
-ARG JAR_FILE=build/libs/*.jar
-ARG SEC_FILE=scripts/security/general-sand-box-key-e1d8290db23e.json
-ARG PEM_FILE=scripts/security/test-net-user.pem
-ARG RUN_COMMAND_SCRIPT=scripts/contract/run-commands.bash
+ARG JAR_FILE=e02-crowdfunding-api/build/libs/*.jar
+ARG PEM_FILE=e02-crowdfunding-api/scripts/security/test-net-user.pem
 COPY ${JAR_FILE} /home/ubuntu/app.jar
-COPY ${SEC_FILE} /home/ubuntu/sec.json
 COPY ${PEM_FILE} /home/ubuntu/test-net-user.pem
-# COPY ${RUN_COMMAND_SCRIPT} /home/ubuntu/contract/contract.snipets.sh
-ENV GOOGLE_APPLICATION_CREDENTIALS=/home/ubuntu/sec.json
 ENV TEST_ENV="variable-defined-by-docker-file-ubuntu"
 ENV PROJECT="/home/ubuntu/mycontract"
 

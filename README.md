@@ -6,7 +6,12 @@ run snippets
 ```bash
 # build java
 cd e02-crowdfunding-api
-
+./gradlew build
+cd ..
+# set env project id (very useful if you deploy on google cloud)
+export PROJECT_ID=my-sand-box
+docker build -t gcr.io/${PROJECT_ID}/crowdfunding:v1 .
+docker run -p 8081:8080 gcr.io/${PROJECT_ID}/crowdfunding:v1
 ```
 
 ## question: How to deploy a contract from React
