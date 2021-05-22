@@ -2,6 +2,12 @@
 
 ## how to scale deployment of smart contracts
 
+run snippets
+```bash
+# build java
+cd e02-crowdfunding-api
+
+```
 
 ## question: How to deploy a contract from React
 Is possible to use the web wallet to sign also deployment transactions?

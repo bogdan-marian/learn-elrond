@@ -1,0 +1,50 @@
+FROM amazoncorretto:11-alpine-jdk
+MAINTAINER bogdan.oloeriu@gmail.com
+
+
+# Install python/pip
+ENV PYTHONUNBUFFERED=1
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip
+RUN pip3 install --no-cache --upgrade pip setuptools
+
+# libcuses
+RUN apk update && \
+    apk add --no-cache \
+        build-base \
+        git \
+        ncurses-libs \
+        ncurses-dev
+
+# wget
+RUN apk add --no-cache wget
+
+# erdpy using pip3
+#RUN pip3 install --upgrade --no-cache erdpy
+
+# RUN addgroup -S spring && adduser -S spring -G spring
+# RUN mkdir app
+# WORKDIR /app
+# RUN chown -R spring:spring /app
+# RUN chmod 755 /app
+# USER spring:spring
+
+# erdpy
+# RUN wget -O erdpy-up.py https://raw.githubusercontent.com/ElrondNetwork/elrond-sdk/master/erdpy-up.py
+# RUN python3 erdpy-up.py
+
+# RUN addgroup -S spring && adduser -S spring -G spring
+# USER spring:spring
+
+RUN git clone https://github.com/bogdan-marian/learn-elrond
+RUN echo "Printing working directory"
+RUN pwd
+RUN ls -al
+ARG JAR_FILE=build/libs/*.jar
+ARG SEC_FILE=scripts/security/general-sand-box-key-e1d8290db23e.json
+
+COPY ${JAR_FILE} app.jar
+COPY ${SEC_FILE} sec.json
+ENV GOOGLE_APPLICATION_CREDENTIALS=sec.json
+ENV TEST_ENV="variable-defined-by-docker-file"
+ENTRYPOINT ["java","-jar","/app.jar"]
