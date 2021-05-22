@@ -24,8 +24,8 @@ async function loadContractCode() {
   //let buffer = await fs.readFile(fileName);
   console.log("fileName", fileName);
   //return Code.fromFile("./e05-crowdfunding.wasm");
-  //return Code.fromUrl("http://localhost:3000/e05-crowdfunding.wasm");
-  return Code.fromUrl("http://localhost:3000/e01-adder.wasm");
+  return Code.fromUrl("http://localhost:3000/e05-crowdfunding.wasm");
+  //return Code.fromUrl("http://localhost:3000/e01-adder.wasm");
 }
 
 export async function deployContract(proxyProvider, signerProvider) {

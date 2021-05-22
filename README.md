@@ -2,15 +2,58 @@
 
 ## how do you deploy smart contracts at massive scale (part 4)
 
-- [ ] intro
-- [ ] explain the problem
-- [ ] current dev efforts
-- [ ] demo
-- [ ] how does it work intro
-  - [ ] java api code
-  - [ ] docker file and deploy snippet
-  - [ ] the PROJECT env value
-- [ ] initial attempt
+- [x] intro
+- [x] explain the problem
+- [x] current Elrond team dev efforts
+- [x] demo
+- [x] how does it work intro
+  - [x] java api code
+  - [x] docker file and deploy snippet
+  - [x] the PROJECT env value
+- [x] initial attempt
+
+Learn to code for Elrond (part 4)
+
+
+Welcome to part four of my journey of learning how to code for Elrond. This is all about how to deploy smart contracts at scale. Love you all ❤️
+
+
+Support me:
+Maiar Herotag: @bogdanoloeriu
+Referral link: https://get.maiar.com/referral/u9sk4wrnt0
+
+Git project: https://github.com/bogdan-marian/learn-elrond
+Git start commit: 69d80d9d669373dc75562a20d23c9b2b19b2731f
+Git end commit: 5c506e5c83543ceac0f08482972665dc65516c23
+Git sow diff: https://github.com/bogdan-marian/learn-elrond/compare/69d80d9d669373dc75562a20d23c9b2b19b2731f..5c506e5c83543ceac0f08482972665dc65516c23
+
+Audio
+Over You - Atch https://soundcloud.com/atch-music
+Creative Commons — Attribution 3.0 Unported — CC BY 3.0
+Free Download / Stream: http://bit.ly/_over-you
+Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
+
+-- Contents of this video --------
+00:00 - Intro
+01:06 - Defining the problem  
+02:57 - Why yo do not what to deploy by hand
+03:24 - Exiting announcement by Lucian Mincu
+05:54 - Demo time
+09:59 - How does it work
+10:44 - Java code explained
+16:11 - Docker part
+22:34 - PROJECT env variable
+25:04 - Just for fun (initial attempt)
+27:00 - Thank you for watching
+
+https://youtu.be/Ng4-q_gCKlE
+Hello wonderful community. Time to learn about how to deploy contracts at scale. If you consider this type of content valuable pleas share and like. Love you all ❤️
+
+
+
+
+
+
 
 ## run snippets
 
