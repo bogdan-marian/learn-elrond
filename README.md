@@ -8,7 +8,7 @@
 - [ ] demo
 - [ ] how does it work intro
   - [ ] java api code
-  - [ ] docker file
+  - [ ] docker file and deploy snippet
   - [ ] the PROJECT env value
 - [ ] initial attempt
 
