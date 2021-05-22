@@ -23,22 +23,20 @@ public class MainController {
 
         @Override
         public void run() {
-            new BufferedReader(new InputStreamReader(inputStream)).lines()
-                    .forEach(consumer);
+            new BufferedReader(new InputStreamReader(inputStream)).lines().forEach(consumer);
         }
     }
 
     @RequestMapping("/")
     public String home() {
-        String simpleResponse = "<html><head><title>Hello Elrond</title></head><body>" +
-                "<div>Hello body</div>" +
-                "<ul>" +
-                "<li><a href=\"./ping\">ping</a></li>" +
-                "<li><a href=\"./simple\">simple</a></li>" +
-                "<li><a href=\"./runErdpyVersion\">runErdpyVersion</a></li>" +
-                "<li><a href=\"./deployContract\">deployContract</a></li>" +
-                "</ul>" +
-                "</body></html>";
+        String simpleResponse = "<html><head><title>Hello Elrond</title></head><body>" 
+        + "<div>Hello body</div>"
+            + "<ul>" 
+                + "<li><a href=\"./ping\">ping</a></li>"
+                + "<li><a href=\"./runErdpyVersion\">runErdpyVersion</a></li>"
+                + "<li><a href=\"./deployContract\">deployContract</a></li>" 
+            + "</ul>" 
+        + "</body></html>";
         return simpleResponse;
     }
 
@@ -53,30 +51,6 @@ public class MainController {
         return response;
     }
 
-    @RequestMapping("/simple")
-    public MainResponse simple() throws IOException, InterruptedException {
-        String testEnv = System.getenv(TEST_ENV);
-
-        MainResponse response = new MainResponse();
-        response.message = "Hello Docker World v1";
-        response.envValue = testEnv;
-
-        String homeDirectory = System.getProperty("user.home");
-        Process process = Runtime.getRuntime().exec("sh -c uname -a");
-
-        System.out.println("Hello from container");
-
-        StringBuilder sb = new StringBuilder();
-        Consumer<String> sc = sb::append;
-        StreamGobbler sg = new StreamGobbler(process.getInputStream(), sc);
-
-        Executors.newSingleThreadExecutor().submit(sg);
-        response.exitCode = process.waitFor();
-        response.bashResponse = sb.toString();
-        System.out.println("Bash response = " + response.bashResponse);
-        return response;
-    }
-
     @RequestMapping("/runErdpyVersion")
     public MainResponse runErdpyVersion() throws IOException, InterruptedException {
         MainResponse response = new MainResponse();
@@ -86,18 +60,15 @@ public class MainController {
         ProcessBuilder builder = new ProcessBuilder();
 
         /*
-         *Properties that you can use
-         * - user.dir
-         * - user.home
+         * Properties that you can use - user.dir - user.home
          */
         String dir = System.getProperty("user.home") + "/mycontract";
         builder.directory(new File(dir));
         builder.command("sh", "-c", "erdpy --version");
-        //builder.command("sh", "-c", "pwd");
+        // builder.command("sh", "-c", "pwd");
 
         Process process = builder.start();
-        StreamGobbler streamGobbler =
-                new StreamGobbler(process.getInputStream(), sc);
+        StreamGobbler streamGobbler = new StreamGobbler(process.getInputStream(), sc);
         Executors.newSingleThreadExecutor().submit(streamGobbler);
         response.exitCode = process.waitFor();
 
@@ -119,27 +90,40 @@ public class MainController {
         ProcessBuilder builder = new ProcessBuilder();
 
         /*
-         *Properties that you can use
-         * - user.dir
-         * - user.home
+         * Properties that you can use - user.dir - user.home
          */
         String dir = System.getProperty("user.home") + "/mycontract/interaction";
         builder.directory(new File(dir));
-        //builder.command("sh", "-c", "erdpy --version");
+        // builder.command("sh", "-c", "erdpy --version");
         builder.command("sh", "-c", "./deploy.snippet.sh");
 
         Process process = builder.start();
-        StreamGobbler streamGobbler =
-                new StreamGobbler(process.getInputStream(), sc);
+        StreamGobbler streamGobbler = new StreamGobbler(process.getInputStream(), sc);
         Executors.newSingleThreadExecutor().submit(streamGobbler);
         response.exitCode = process.waitFor();
 
         // reader is not consistent commands need to wait
         Thread.sleep(25);
 
-        Date date = new Date();
         response.bashResponse = sb.toString();
+        String[] sections = response.bashResponse.split(":");
+        Date date = new Date();
         response.timeStamp = date.getTime();
+
+        if (sections.length == 2) {
+            String message = sections[0];
+            if (!"Smart contract address".equals(message)) {
+                response.error = true;
+                return response;
+            }
+
+        }
+
+        String address = sections[1];
+        response.bashResponse = response.bashResponse + " length = " + address.length();
+        response.contractAddress = address;
+
+        response.error = false;
         return response;
     }
 }

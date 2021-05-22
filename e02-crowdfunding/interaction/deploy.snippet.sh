@@ -1,5 +1,5 @@
 # ALICE="${USERS}/alice.pem"
-ALICE="/home/bogdan/Documents/pem/test-net-user.pem"
+ALICE="/home/ubuntu/test-net-user.pem"
 ADDRESS=$(erdpy data load --key=address-testnet)
 DEPLOY_TRANSACTION=$(erdpy data load --key=deployTransaction-testnet)
 DEPLOY_ARGUMENTS="12 42000000"
@@ -18,7 +18,7 @@ deploy() {
     erdpy data store --key=deployTransaction-testnet --value=${TRANSACTION}
 
     echo ""
-    echo "Smart contract address: ${ADDRESS}"
+    echo "Smart contract address:${ADDRESS}"
 }
 
 deploy
