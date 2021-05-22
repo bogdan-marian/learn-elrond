@@ -126,7 +126,7 @@ public class MainController {
         String dir = System.getProperty("user.home") + "/mycontract/interaction";
         builder.directory(new File(dir));
         //builder.command("sh", "-c", "erdpy --version");
-        builder.command("sh", "-c", "./testnet.snippets.sh");
+        builder.command("sh", "-c", "./deploy.snippet.sh");
 
         Process process = builder.start();
         StreamGobbler streamGobbler =
