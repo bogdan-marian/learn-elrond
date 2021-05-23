@@ -24,4 +24,10 @@ yarn add tradle/rn-nodeify
 
 # second try crypto
 yarn add react-native-crypto-js
+
+
 ```
+
+[hints to fix crypto problem:](https://medium.com/hackernoon/using-core-node-js-modules-in-react-native-apps-64acd4d07140)
+Is a long way to do the crypto bundle yourself but if you install the react-native-crypto package and just alias the native NodeJS crypto module with the react-native one then will work.
+

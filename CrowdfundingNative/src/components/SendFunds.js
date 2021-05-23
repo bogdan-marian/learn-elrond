@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, Button, TextInput} from 'react-native';
 import {ScreenContainer} from './ScreenContainer';
 import {AuthContext} from '../utils/standardcontext';
-import crypto from 'crypto'
 import * as core from '@elrondnetwork/elrond-core-js';
 
 export const SendFunds = ({navigation}) => {
