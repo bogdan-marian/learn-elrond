@@ -35,8 +35,8 @@ const HomeStackScreen = () => {
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [userToken, setUserToken] = React.useState();
-  const [keyFileObject, setKeyFileObject] = React.useState();
-  const [keyFilePassword, setKeyFilePassword] = React.useState();
+  const [appKeyFileObject, setKeyFileObject] = React.useState();
+  const [appKeyFilePassword, setKeyFilePassword] = React.useState();
 
   const authContext = React.useMemo(() => {
     return {
@@ -52,16 +52,32 @@ const App = () => {
         setIsLoading(false);
         setKeyFileObject(keyFileObject);
         setKeyFilePassword(keyFilePassword);
-        console.log('AuthContext keyFileObject', keyFileObject, keyFilePassword);
+        if (keyFileObject !== null && keyFilePassword != null) {
+          /*
+           * I have no idea but the context does not load until I read some stuff from keyFile
+           */
+          console.log('address', keyFileObject.address);
+          setUserToken('bingo');
+        } else {
+          setUserToken(null);
+        }
       },
+      getKeyFile: () => {
+        console.log(appKeyFileObject)
+        return appKeyFileObject
+      },
+      getPassword: () => {
+        
+        return appKeyFilePassword
+      },
+      keyFileObject: appKeyFileObject,
+      keyFilePassword: appKeyFilePassword,
     };
   }, []);
 
   React.useEffect(() => {
     setIsLoading(false);
   }, []);
-
-
 
   if (isLoading) {
     return <LoadingScreen />;

@@ -36,7 +36,7 @@ export const ConnectToWallet = ({navigation}) => {
       /* const fs = RNFetchBlob.fs;
       let content = fs.readFile(res.uri, 'utf8');
       console.log("content ", content); */
-      setKeyFileName(res.name)
+      setKeyFileName(res.name);
 
       RNFS.readFile(res.uri, 'ascii').then(content => {
         let jsonContent = JSON.parse(content);
