@@ -12,7 +12,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Text, View} from 'react-native';
-import {SignIn} from './components/SignIn';
+import {ConnectToWallet} from './components/ConnectTowallet';
 import {Home} from './components/Home';
 import {About} from './components/About';
 import {SendFunds} from './components/SendFunds';
@@ -33,11 +33,11 @@ const HomeStackScreen = () => {
 
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
-  React.useEffect(()=>{
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
-  }, [])
+  const [userToken, setUserToken] = React.useState();
+
+  React.useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -45,14 +45,21 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Tabs.Navigator>
-        <Tabs.Screen name="Home" component={HomeStackScreen} />
-        <Tabs.Screen name="About" component={About} />
-      </Tabs.Navigator>
-      {/* <AuthStack.Navigator>
-        <AuthStack.Screen name="SignIn" component={SignIn} />
-        <AuthStack.Screen name="Home" component={Home} />
-      </AuthStack.Navigator> */}
+      {userToken ? (
+        <Tabs.Navigator>
+          <Tabs.Screen name="Home" component={HomeStackScreen} />
+          <Tabs.Screen name="About" component={About} />
+        </Tabs.Navigator>
+      ) : (
+        <AuthStack.Navigator>
+          <AuthStack.Screen
+            name="ConnectToWallet"
+            component={ConnectToWallet}
+          />
+        </AuthStack.Navigator>
+      )}
+
+      {/*  */}
     </NavigationContainer>
   );
 };
