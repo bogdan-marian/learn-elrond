@@ -15,10 +15,13 @@ yarn add react-native-document-picker
 yarn add rn-fetch-blob
 yarn add react-native-fs
 
+# first try crypto
 yarn add react-native-crypto
 yarn add react-native-randombytes
 yarn react-native link react-native-randombytes
 yarn add tradle/rn-nodeify
 ./node_modules/.bin/rn-nodeify --hack --install
-```
 
+# second try crypto
+yarn add react-native-crypto-js
+```
