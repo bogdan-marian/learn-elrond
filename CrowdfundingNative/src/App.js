@@ -5,41 +5,24 @@
  * @format
  * @flow strict-local
  */
-
 import React from 'react';
-import {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
+import {Text, View} from 'react-native';
+import {SignIn} from './components/SignIn';
+
+const AuthStack = createStackNavigator();
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  
-
   return (
-    <View >
-      <Text>
-        Hello react native
-      </Text>
-    </View>
+    <NavigationContainer>
+      <AuthStack.Navigator>
+        <AuthStack.Screen name="SignIn" component={SignIn} />
+      </AuthStack.Navigator>
+    </NavigationContainer>
   );
 };
-
 
 export default App;
