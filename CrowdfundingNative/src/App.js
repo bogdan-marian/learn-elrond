@@ -32,7 +32,12 @@ const HomeStackScreen = () => {
 };
 
 const App = () => {
-  const [isLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(true);
+  React.useEffect(()=>{
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+  }, [])
 
   if (isLoading) {
     return <LoadingScreen />;
