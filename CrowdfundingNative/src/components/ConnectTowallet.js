@@ -3,11 +3,14 @@ import {View, Text, Button, TextInput} from 'react-native';
 import {ScreenContainer} from './ScreenContainer';
 import {AuthContext} from '../utils/standardcontext';
 import DocumentPicker from 'react-native-document-picker';
+//import RNFetchBlob from 'rn-fetch-blob'
+import * as RNFS from 'react-native-fs';
 
 export const ConnectToWallet = ({navigation}) => {
   const {signIn, updateWalletCredentials} = React.useContext(AuthContext);
-  const [keyFile, setKeyFile] = useState(null);
-  const [keyFilePassword, setKeyFilePassword] = React.useState();
+  const [keyFileObject, setKeyFileObject] = useState(null);
+  const [keyFileName, setKeyFileName] = useState(null);
+  const [keyFilePassword, setKeyFilePassword] = React.useState(null);
 
   const selectOneFile = async () => {
     //Opening Document Picker for selection of one file
@@ -22,13 +25,23 @@ export const ConnectToWallet = ({navigation}) => {
         // DocumentPicker.types.pdf
       });
       //Printing the log realted to the file
-      console.log('res : ' + JSON.stringify(res));
-      console.log('URI : ' + res.uri);
-      console.log('Type : ' + res.type);
-      console.log('File Name : ' + res.name);
-      console.log('File Size : ' + res.size);
+      //console.log('res : ' + JSON.stringify(res));
+      //console.log('URI : ' + res.uri);
+      //console.log('Type : ' + res.type);
+      //console.log('File Name : ' + res.name);
+      //console.log('File Size : ' + res.size);
       //Setting the state to show single file attributes
-      setKeyFile(res);
+      //setKeyFileObject(res);
+
+      /* const fs = RNFetchBlob.fs;
+      let content = fs.readFile(res.uri, 'utf8');
+      console.log("content ", content); */
+      setKeyFileName(res.name)
+
+      RNFS.readFile(res.uri, 'ascii').then(content => {
+        let jsonContent = JSON.parse(content);
+        setKeyFileObject(jsonContent);
+      });
     } catch (err) {
       //Handling any exception (If any)
       if (DocumentPicker.isCancel(err)) {
@@ -43,7 +56,11 @@ export const ConnectToWallet = ({navigation}) => {
   };
 
   function disableOpenWallet() {
-    if (keyFile !== null && keyFilePassword !== null) {
+    if (
+      keyFileObject !== null &&
+      keyFilePassword !== null &&
+      keyFilePassword !== ''
+    ) {
       return false;
     } else {
       return true;
@@ -53,7 +70,7 @@ export const ConnectToWallet = ({navigation}) => {
   return (
     <ScreenContainer>
       <Text>Load key file</Text>
-      <Text>--------</Text>
+      <Text>{keyFileName}</Text>
       {/* <Button title="Sign In" onPress={() => signIn()}/> */}
       <TextInput
         secureTextEntry={true}
@@ -62,9 +79,16 @@ export const ConnectToWallet = ({navigation}) => {
       />
 
       <Button title="Load test key file" onPress={() => selectOneFile()} />
-      <Button title="Open wallet" disabled={disableOpenWallet()} 
-      onPress={() => updateWalletCredentials({
-        keyFile,      keyFilePassword})}/>
+      <Button
+        title="Open wallet"
+        disabled={disableOpenWallet()}
+        onPress={() =>
+          updateWalletCredentials({
+            keyFileObject,
+            keyFilePassword,
+          })
+        }
+      />
     </ScreenContainer>
   );
 };

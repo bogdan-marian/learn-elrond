@@ -35,7 +35,7 @@ const HomeStackScreen = () => {
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [userToken, setUserToken] = React.useState();
-  const [keyFile, setKeyFile] = React.useState();
+  const [keyFileObject, setKeyFileObject] = React.useState();
   const [keyFilePassword, setKeyFilePassword] = React.useState();
 
   const authContext = React.useMemo(() => {
@@ -48,11 +48,11 @@ const App = () => {
         setIsLoading(false);
         setUserToken(null);
       },
-      updateWalletCredentials: ({keyFile, keyFilePassword}) => {
+      updateWalletCredentials: ({keyFileObject, keyFilePassword}) => {
         setIsLoading(false);
-        setKeyFile(keyFile);
+        setKeyFileObject(keyFileObject);
         setKeyFilePassword(keyFilePassword);
-        console.log('AuthContext message', keyFile.name, keyFilePassword);
+        console.log('AuthContext keyFileObject', keyFileObject, keyFilePassword);
       },
     };
   }, []);
@@ -61,7 +61,7 @@ const App = () => {
     setIsLoading(false);
   }, []);
 
-  
+
 
   if (isLoading) {
     return <LoadingScreen />;
