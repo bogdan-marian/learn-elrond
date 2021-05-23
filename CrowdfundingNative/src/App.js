@@ -15,6 +15,8 @@ import {Text, View} from 'react-native';
 import {SignIn} from './components/SignIn';
 import {Home} from './components/Home';
 import {About} from './components/About';
+import {SendFunds} from './components/SendFunds';
+import {LoadingScreen} from './components/LoadingScreen';
 
 const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -24,11 +26,18 @@ const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="SendFunds" component={SendFunds} />
     </HomeStack.Navigator>
   );
 };
 
 const App = () => {
+  const [isLoading] = React.useState(true);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <NavigationContainer>
       <Tabs.Navigator>
