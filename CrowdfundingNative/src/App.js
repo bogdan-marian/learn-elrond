@@ -17,7 +17,7 @@ import {Home} from './components/Home';
 import {About} from './components/About';
 import {SendFunds} from './components/SendFunds';
 import {LoadingScreen} from './components/LoadingScreen';
-import {AuthContext} from './utils/context';
+import {AuthContext} from './utils/standardcontext';
 
 const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
