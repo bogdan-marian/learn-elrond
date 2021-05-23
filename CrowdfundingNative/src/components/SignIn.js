@@ -7,7 +7,7 @@ export const SignIn = ({ navigation }) => {
     <ScreenContainer>
       <Text>Sign in Screen</Text>
       <Button title="Sign In" />
-      <Button title="Create Account" onPress={() => navigation.push("CreateAccount")} />
+      <Button title="Home" onPress={() => navigation.push("Home")} />
     </ScreenContainer>
   );
 };

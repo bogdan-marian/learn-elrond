@@ -12,6 +12,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {Text, View} from 'react-native';
 import {SignIn} from './components/SignIn';
+import {Home} from './components/Home';
 
 const AuthStack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const App = () => {
     <NavigationContainer>
       <AuthStack.Navigator>
         <AuthStack.Screen name="SignIn" component={SignIn} />
+        <AuthStack.Screen name="Home" component={Home} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );
