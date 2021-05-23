@@ -23,62 +23,53 @@ const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
 
-const HomeStackScreen = () => {
-  return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={Home} />
-      <HomeStack.Screen name="SendFunds" component={SendFunds} />
-    </HomeStack.Navigator>
-  );
-};
-
 const App = () => {
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [userToken, setUserToken] = React.useState();
   const [appKeyFileObject, setKeyFileObject] = React.useState();
   const [appKeyFilePassword, setKeyFilePassword] = React.useState();
 
+
   const authContext = React.useMemo(() => {
     return {
       signIn: () => {
-        setIsLoading(false);
         setUserToken('something');
       },
       signOut: () => {
-        setIsLoading(false);
         setUserToken(null);
       },
       updateWalletCredentials: ({keyFileObject, keyFilePassword}) => {
-        setIsLoading(false);
-        setKeyFileObject(keyFileObject);
-        setKeyFilePassword(keyFilePassword);
+        //stringify is needed to force reading entire object
+        console.log(keyFileObject);
+        console.log(keyFilePassword);
+        JSON.stringify(keyFileObject);
+        JSON.stringify(keyFilePassword);
         if (keyFileObject !== null && keyFilePassword != null) {
-          /*
-           * I have no idea but the context does not load until I read some stuff from keyFile
-           */
-          console.log('address', keyFileObject.address);
+          console.log('App password: ', keyFilePassword);
+          setKeyFileObject(keyFileObject);
+          setKeyFilePassword(keyFilePassword);
           setUserToken('bingo');
         } else {
           setUserToken(null);
         }
       },
       getKeyFile: () => {
-        console.log(appKeyFileObject)
-        return appKeyFileObject
+        return appKeyFileObject;
       },
       getPassword: () => {
-        
-        return appKeyFilePassword
+        return appKeyFilePassword;
       },
-      keyFileObject: appKeyFileObject,
-      keyFilePassword: appKeyFilePassword,
     };
   }, []);
 
-  React.useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
+  const HomeStackScreen = () => {
+    return (
+      <HomeStack.Navigator>
+        <HomeStack.Screen name="Home" component={Home} />
+        <HomeStack.Screen name="SendFunds" component={SendFunds} />
+      </HomeStack.Navigator>
+    );
+  };
   if (isLoading) {
     return <LoadingScreen />;
   }

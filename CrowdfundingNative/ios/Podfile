@@ -12,6 +12,8 @@ target 'CrowdfundingNative' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-randombytes', :path => '../node_modules/react-native-randombytes'
+
   target 'CrowdfundingNativeTests' do
     inherit! :complete
     # Pods for testing
