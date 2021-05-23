@@ -47,7 +47,7 @@ Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
 27:00 - Thank you for watching
 
 https://youtu.be/Ng4-q_gCKlE
-Hello wonderful community. Time to learn about how to deploy contracts at scale. If you consider this type of content valuable pleas share and like. Love you all ❤️
+Hello, wonderful community. Time to learn about how to deploy contracts at scale. If you consider this type of content valuable please share like and subscribe. Love you all ❤️
 
 
 
