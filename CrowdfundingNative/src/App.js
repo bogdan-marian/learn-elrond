@@ -17,6 +17,7 @@ import {Home} from './components/Home';
 import {About} from './components/About';
 import {SendFunds} from './components/SendFunds';
 import {LoadingScreen} from './components/LoadingScreen';
+import {AuthContext} from './utils/context';
 
 const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -35,6 +36,19 @@ const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [userToken, setUserToken] = React.useState();
 
+  const authContext = React.useMemo(() => {
+    return {
+      signIn: () => {
+        setIsLoading(false);
+        setUserToken('something');
+      },
+      signOut: () => {
+        setIsLoading(false);
+        setUserToken(null);
+      },
+    };
+  }, []);
+
   React.useEffect(() => {
     setIsLoading(false);
   }, []);
@@ -44,23 +58,25 @@ const App = () => {
   }
 
   return (
-    <NavigationContainer>
-      {userToken ? (
-        <Tabs.Navigator>
-          <Tabs.Screen name="Home" component={HomeStackScreen} />
-          <Tabs.Screen name="About" component={About} />
-        </Tabs.Navigator>
-      ) : (
-        <AuthStack.Navigator>
-          <AuthStack.Screen
-            name="ConnectToWallet"
-            component={ConnectToWallet}
-          />
-        </AuthStack.Navigator>
-      )}
+    <AuthContext.Provider value={authContext}>
+      <NavigationContainer>
+        {userToken ? (
+          <Tabs.Navigator>
+            <Tabs.Screen name="Home" component={HomeStackScreen} />
+            <Tabs.Screen name="About" component={About} />
+          </Tabs.Navigator>
+        ) : (
+          <AuthStack.Navigator>
+            <AuthStack.Screen
+              name="ConnectToWallet"
+              component={ConnectToWallet}
+            />
+          </AuthStack.Navigator>
+        )}
 
-      {/*  */}
-    </NavigationContainer>
+        {/*  */}
+      </NavigationContainer>
+    </AuthContext.Provider>
   );
 };
 
