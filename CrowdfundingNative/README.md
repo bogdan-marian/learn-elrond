@@ -31,3 +31,22 @@ yarn add react-native-crypto-js
 [hints to fix crypto problem:](https://medium.com/hackernoon/using-core-node-js-modules-in-react-native-apps-64acd4d07140)
 Is a long way to do the crypto bundle yourself but if you install the react-native-crypto package and just alias the native NodeJS crypto module with the react-native one then will work.
 
+## clean cache project
+
+```bash
+# yarn
+watchman watch-del-all
+rm -rf node_modules
+yarn cache clean
+yarn install
+yarn react-native start --reset-cache
+
+# android do not forget
+./gradlew clean
+
+
+https://github.com/bogdan-marian/learn-elrond/compare/28a3f4597c34a65bd8b0cee0dfd8f3a012106091..7589e054c630b2d0447e792fdc3e8e327230b2ba
+
+28a3f4597c34a65bd8b0cee0dfd8f3a012106091
+7589e054c630b2d0447e792fdc3e8e327230b2ba
+
