@@ -43,8 +43,9 @@ yarn react-native start --reset-cache
 
 # android do not forget
 ./gradlew clean
+```
 
-
+## git compare
 https://github.com/bogdan-marian/learn-elrond/compare/28a3f4597c34a65bd8b0cee0dfd8f3a012106091..7589e054c630b2d0447e792fdc3e8e327230b2ba
 
 28a3f4597c34a65bd8b0cee0dfd8f3a012106091

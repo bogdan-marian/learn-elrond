@@ -26,26 +26,21 @@ const HomeStack = createStackNavigator();
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [userToken, setUserToken] = React.useState();
-  const [appKeyFileObject, setKeyFileObject] = React.useState();
-  const [appKeyFilePassword, setKeyFilePassword] = React.useState();
-
+  const [appKeyFileObject, setKeyFileObject] = React.useState(null);
+  const [appKeyFilePassword, setKeyFilePassword] = React.useState(null);
 
   const authContext = React.useMemo(() => {
     return {
       signIn: () => {
-        setUserToken('something');
+        setUserToken('something not important we use web wallet key file');
       },
       signOut: () => {
         setUserToken(null);
+        setKeyFileObject(null);
+        setKeyFilePassword(null);
       },
       updateWalletCredentials: ({keyFileObject, keyFilePassword}) => {
-        //stringify is needed to force reading entire object
-        console.log(keyFileObject);
-        console.log(keyFilePassword);
-        JSON.stringify(keyFileObject);
-        JSON.stringify(keyFilePassword);
         if (keyFileObject !== null && keyFilePassword != null) {
-          console.log('App password: ', keyFilePassword);
           setKeyFileObject(keyFileObject);
           setKeyFilePassword(keyFilePassword);
           setUserToken('bingo');
@@ -60,7 +55,13 @@ const App = () => {
         return appKeyFilePassword;
       },
     };
-  }, []);
+  }, [appKeyFileObject, appKeyFilePassword]);
+
+  const walletAddress = () => {
+    if (keyFileObject != null) {
+      return keyFileObject?.address;
+    }
+  };
 
   const HomeStackScreen = () => {
     return (
@@ -77,7 +78,7 @@ const App = () => {
   return (
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
-        {userToken ? (
+        {appKeyFileObject !== null && appKeyFilePassword !== null ? (
           <Tabs.Navigator>
             <Tabs.Screen name="Home" component={HomeStackScreen} />
             <Tabs.Screen name="About" component={About} />
@@ -90,8 +91,6 @@ const App = () => {
             />
           </AuthStack.Navigator>
         )}
-
-        {/*  */}
       </NavigationContainer>
     </AuthContext.Provider>
   );

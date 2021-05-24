@@ -32,7 +32,7 @@ export const ConnectToWallet = ({navigation}) => {
       //console.log('File Size : ' + res.size);
       //Setting the state to show single file attributes
       //setKeyFileObject(res);
-
+      
       /* const fs = RNFetchBlob.fs;
       let content = fs.readFile(res.uri, 'utf8');
       console.log("content ", content); */
