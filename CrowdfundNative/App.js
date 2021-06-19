@@ -11,6 +11,7 @@ import {Search} from './components/Search';
 import {Search2} from './components/Search2';
 import {Details} from './components/Details';
 import {OpenWallet} from './components/OpenWallet';
+import {ElrondProvider} from './context';
 
 const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -20,9 +21,11 @@ const SearchStack = createStackNavigator();
 const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={Home} />
-      <HomeStack.Screen name="Details" component={Details} />
-      <HomeStack.Screen name="OpenWallet" component={OpenWallet} />
+      <ElrondProvider>
+        <HomeStack.Screen name="Home" component={Home} />
+        <HomeStack.Screen name="Details" component={Details} />
+        <HomeStack.Screen name="OpenWallet" component={OpenWallet} />
+      </ElrondProvider>
     </HomeStack.Navigator>
   );
 };

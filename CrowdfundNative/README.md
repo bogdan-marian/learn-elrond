@@ -15,4 +15,8 @@ yarn add react-native-reanimated react-native-gesture-handler react-native-scree
 yarn add @react-navigation/stack
 yarn add @react-navigation/drawer
 yarn add @react-navigation/bottom-tabs
+
+# extra stuff
+yarn add moment
+yarn add react-native-crypto
 ```

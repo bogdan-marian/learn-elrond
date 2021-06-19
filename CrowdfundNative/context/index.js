@@ -1,11 +1,12 @@
-import React from "react";
-import {  initialState } from "./state";
-import {  reducer } from "./reducer";
+import React from 'react';
+import {initialState} from './state';
+import {reducer} from './reducer';
 
 const Context = React.createContext();
 const Dispatch = React.createContext();
+const AuthContext = React.createContext();
 
-function ElrondProvider({ children }) {
+function ElrondProvider({children}) {
   const [state, dispatch] = React.useReducer(reducer, initialState());
 
   return (
@@ -18,7 +19,7 @@ function ElrondProvider({ children }) {
 function useElrondContext() {
   const context = React.useContext(Context);
   if (context === undefined) {
-    throw new Error("useState must be used within a Context.Provider");
+    throw new Error('useState must be used within a Context.Provider');
   }
   return context;
 }
@@ -26,9 +27,9 @@ function useElrondContext() {
 function useElrondDispatch() {
   const context = React.useContext(Dispatch);
   if (context === undefined) {
-    throw new Error("useDispatch must be used within a Dispatch.Provider");
+    throw new Error('useDispatch must be used within a Dispatch.Provider');
   }
   return context;
 }
 
-export { ElrondProvider, useElrondContext, useElrondDispatch };
+export {ElrondProvider, useElrondContext, useElrondDispatch, AuthContext};
