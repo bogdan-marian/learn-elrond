@@ -20,3 +20,7 @@ yarn add @react-navigation/bottom-tabs
 yarn add moment
 yarn add react-native-crypto
 ```
+
+## Wallet connect
+
+[Wallet connect instructions](https://docs.walletconnect.org/quick-start/dapps/react-native)
