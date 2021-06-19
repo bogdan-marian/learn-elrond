@@ -10,6 +10,7 @@ import {Home} from './components/Home';
 import {Search} from './components/Search';
 import {Search2} from './components/Search2';
 import {Details} from './components/Details';
+import {OpenWallet} from './components/OpenWallet';
 
 const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -21,6 +22,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={Home} />
       <HomeStack.Screen name="Details" component={Details} />
+      <HomeStack.Screen name="OpenWallet" component={OpenWallet} />
     </HomeStack.Navigator>
   );
 };

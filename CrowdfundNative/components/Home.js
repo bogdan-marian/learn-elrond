@@ -1,25 +1,31 @@
-import React from "react";
-import { View, Text, Button } from "react-native";
-import { ScreenContainer } from "./ScreenContainer";
-import { Details } from "./Details";
+import React from 'react';
+import {View, Text, Button} from 'react-native';
+import {ScreenContainer} from './ScreenContainer';
+import {Details} from './Details';
 
-export const Home = ({ navigation }) => {
+export const Home = ({navigation}) => {
   return (
     <ScreenContainer>
       <Text>Home Screen</Text>
       <Button
+        title="Open Wallet"
+        onPress={() =>
+          navigation.push('OpenWallet', {name: 'Connect elrond wallet'})
+        }
+      />
+      <Button
         title="React Native by Example"
         onPress={() =>
-          navigation.push("Details", { name: "React Native by Example" })
+          navigation.push('Details', {name: 'React Native by Example'})
         }
       />
       <Button
         title="React Native School"
         onPress={() =>
-          navigation.push("Details", { name: "React Native School" })
+          navigation.push('Details', {name: 'React Native School'})
         }
       />
-      <Button title="Drawr" onPress={() => alert("todo")} />
+      <Button title="Drawr" onPress={() => alert('todo')} />
     </ScreenContainer>
   );
 };
