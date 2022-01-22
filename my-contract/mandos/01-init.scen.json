@@ -48,9 +48,7 @@
         "sc:my-contract": {
           "nonce": "*",
           "balance": "0",
-          "storage": {
-            "str:owner": "address:owner"
-          },
+          "storage": {},
           "code": "file:../output/my-contract.wasm"
         }
       }
