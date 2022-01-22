@@ -1,5 +1,18 @@
 # learn-elrond
 
+## create a smart contract from scratch (part 5)
+- [] intro
+- [] cargo new my-contract
+- [] add my_contract.rs and nightly rust-toolchain
+- [] add wasm folder by hand
+- [] persist the owner
+- [] add the meta crate
+
+
+
+
+
+
 ## how do you deploy smart contracts at massive scale (part 4)
 
 - [x] intro
