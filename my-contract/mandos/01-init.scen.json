@@ -1,0 +1,57 @@
+{
+  "name": "my_contract",
+  "comment": "init scenario",
+  "steps": [
+    {
+      "step": "setState",
+      "accounts": {
+        "address:owner": {
+          "nonce": "0",
+          "balance": "0"
+        }
+      },
+      "newAddresses": [
+        {
+          "creatorAddress": "address:owner",
+          "creatorNonce": "0",
+          "newAddress": "sc:my-contract"
+        }
+      ]
+    },
+    {
+      "step": "scDeploy",
+      "txId": "deploy",
+      "tx": {
+        "from": "address:owner",
+        "contractCode": "file:../output/my-contract.wasm",
+        "arguments": [],
+        "gasLimit": "10,000,000",
+        "gasPrice": "0"
+      },
+      "expect": {
+        "out": [],
+        "status": "0",
+        "logs": [],
+        "gas": "*",
+        "refund": "*"
+      }
+    },
+    {
+      "step": "checkState",
+      "accounts": {
+        "address:owner": {
+          "nonce": "*",
+          "balance": "0",
+          "storage": {},
+          "code": ""
+        },
+        "sc:my-contract": {
+          "nonce": "*",
+          "balance": "0",
+          "storage": {},
+          "code": "file:../output/my-contract.wasm"
+        }
+      }
+    }
+  ]
+}
