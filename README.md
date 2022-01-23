@@ -1,6 +1,6 @@
 # learn-elrond
 
-## create a smart contract from scratch (part 5)
+## create a smart contract from scratch (part 6L)
 
 - [] cargo new my-contract
 - [] add my_contract.rs file
@@ -13,6 +13,26 @@
 
 Miaiar herotag: @bogdanoloeriu
 
+Description
+Welcome to part 1 of how to build elrond smart contracts from scratch. Hint: `cargo new my-contract`
+
+Suport me:
+Maiar Herotag: @bogdanoploeriu
+Referral link: https://get.maiar.com/referral/u9sk4wrnt0
+
+Git project: https://github.com/bogdan-marian/learn-elrond
+Git start commit: 7cf6df7df841d8df6c837e4031207af9704d41cb
+
+-- Contents of this video --------
+00:00 - Intro
+00:51 - cargo new my-contract
+02:17 - Add my_contract.rs file
+02:56 - Create simple entry point
+07:05 - Enable nightly rust tool chain
+09:02 - Add wasm crate by hand
+16:27 - Add first mandos test
+20:28 - Persist the owner in contract storage
+24:15 - Add the meta crate
 
 
 
@@ -33,8 +53,8 @@ Learn to code for Elrond (part 4)
 
 Welcome to part four of my journey of learning how to code for Elrond. This is all about how to deploy smart contracts at scale. Love you all ❤️
 
-Support me:
-Maiar Herotag: @bogdanoloeriu
+Suport me:
+Maiar Herotag: @bogdanoploeriu
 Referral link: https://get.maiar.com/referral/u9sk4wrnt0
 
 Git project: https://github.com/bogdan-marian/learn-elrond
