@@ -3,12 +3,12 @@
 ## create a smart contract from scratch (part 5)
 
 - [] cargo new my-contract
-- [] add my_contract.rs and nightly rust-toolchain
+- [] add my_contract.rs file
 - [] create empty init entry point and compile with cargo
 - [] enable nightly rust tool chain
 - [] add wasm crate by hand
 - [] add first mandos test
-- [] persist the owner in contract storage
+- [] persist the owner in contract storage 
 - [] add the meta crate
 
 Miaiar herotag: @bogdanoloeriu
