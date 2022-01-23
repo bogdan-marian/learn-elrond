@@ -1,13 +1,17 @@
 # learn-elrond
 
 ## create a smart contract from scratch (part 5)
-- [] intro
+
 - [] cargo new my-contract
 - [] add my_contract.rs and nightly rust-toolchain
-- [] add wasm folder by hand
-- [] persist the owner
+- [] create empty init entry point and compile with cargo
+- [] enable nightly rust tool chain
+- [] add wasm crate by hand
+- [] add first mandos test
+- [] persist the owner in contract storage
 - [] add the meta crate
 
+Miaiar herotag: @bogdanoloeriu
 
 
 
@@ -27,9 +31,7 @@
 
 Learn to code for Elrond (part 4)
 
-
 Welcome to part four of my journey of learning how to code for Elrond. This is all about how to deploy smart contracts at scale. Love you all ❤️
-
 
 Support me:
 Maiar Herotag: @bogdanoloeriu
@@ -61,12 +63,6 @@ Music promoted by Audio Library https://youtu.be/rlBuOflkHSk
 
 https://youtu.be/Ng4-q_gCKlE
 Hello wonderful community. Time to learn about how to deploy contracts at scale. If you consider this type of content valuable pleas share and like. Love you all ❤️
-
-
-
-
-
-
 
 ## run snippets
 
