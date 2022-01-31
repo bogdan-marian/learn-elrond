@@ -34,6 +34,7 @@ Git start commit: 7cf6df7df841d8df6c837e4031207af9704d41cb
 20:28 - Persist the owner in contract storage
 24:15 - Add the meta crate
 
+I have created a new tutorial. How to build a smart contract from scratch: https://youtu.be/UYU9Gqw8ldg . Elrond community is awesome. I love you all ❤️
 
 
 
