@@ -49,7 +49,6 @@
           "nonce": "*",
           "balance": "0",
           "storage": {
-            "str:owner": "address:owner"
           },
           "code": "file:../output/my-contract.wasm"
         }

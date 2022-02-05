@@ -6,11 +6,6 @@ elrond_wasm::imports!();
 pub trait MyContract {
     #[init]
     fn init(&self) {
-        let _my_address: ManagedAddress = self.blockchain().get_caller();
-        self.set_owner(&_my_address);
     }
 
-    // <storage section>
-    #[storage_set("owner")]
-    fn set_owner(&self, address: &ManagedAddress);
 }
