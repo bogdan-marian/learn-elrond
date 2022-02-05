@@ -8,6 +8,8 @@ elrond_wasm_node::wasm_endpoints! {
     my_contract
     (
         init
+        createNft
+        getTokenId
     )
 }
 
