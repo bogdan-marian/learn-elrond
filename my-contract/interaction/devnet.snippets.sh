@@ -71,3 +71,14 @@ createNft() {
   --proxy=${PROXY} --chain=${CHAINID} --send \
   --outfile="${MY_LOGS}/createNft.json"
 }
+
+buyNft(){
+  NFT_PRICE="7"
+  NFT_NONCE="2"
+  erdpy --verbose contract call ${ADDRESS} --recall-nonce --pem=${BOGDAN} --gas-limit=${BUY_GAS} \
+    --function="buyNft" \
+    --value ${NFT_PRICE} \
+    --arguments ${NFT_NONCE} \
+    --proxy=${PROXY} --chain=${CHAINID} --send \
+    --outfile="${MY_LOGS}/buyNft.json"
+}

@@ -189,6 +189,55 @@ pub trait NftModule{
             .async_call())
     }
 
+
+    #[payable("*")]
+    #[endpoint(buyNft)]
+    fn buy_nft(
+        &self,
+        #[payment_token] payment_token: TokenIdentifier,
+        #[payment_nonce] payment_nonce: u64,
+        #[payment_amount] payment_amount: BigUint,
+        nft_nonce: u64,
+    ) -> SCResult<()> {
+        self.require_token_issued()?;
+        require!(
+            !self.price_tag(nft_nonce).is_empty(),
+            "Invalid nonce or NFT was already sold"
+        );
+
+        let price_tag = self.price_tag(nft_nonce).get();
+        require!(
+            payment_token == price_tag.token,
+            "Invalid token used as payment"
+        );
+        require!(
+            payment_nonce == price_tag.nonce,
+            "Invalid nonce for payment token"
+        );
+        require!(
+            payment_amount == price_tag.amount,
+            "Invalid amount as payment"
+        );
+
+        self.price_tag(nft_nonce).clear();
+
+        let nft_token_id = self.nft_token_id().get();
+        let caller = self.blockchain().get_caller();
+        self.send().direct(
+            &caller,
+            &nft_token_id,
+            nft_nonce,
+            &BigUint::from(NFT_AMOUNT),
+            &[],
+        );
+
+        let owner = self.blockchain().get_owner_address();
+        self.send()
+            .direct(&owner, &payment_token, payment_nonce, &payment_amount, &[]);
+
+        Ok(())
+    }
+
     // storage
     #[view(getTokenId)]
     #[storage_mapper("nftTokenId")]

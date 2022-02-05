@@ -1,0 +1,157 @@
+{
+  "name": "buy nft",
+  "steps": [
+    {
+      "step": "externalSteps",
+      "path": "02_create_nft.scen.json"
+    },
+    {
+      "step": "setState",
+      "accounts": {
+        "address:buyer": {
+          "nonce": "0",
+          "balance": "1000"
+        }
+      }
+    },
+    {
+      "step": "scCall",
+      "txId": "buy-nft-wrong-amount",
+      "tx": {
+        "from": "address:buyer",
+        "to": "sc:my-contract",
+        "egldValue": "400",
+        "function": "buyNft",
+        "arguments": [
+          "1"
+        ],
+        "gasLimit": "20,000,000",
+        "gasPrice": "0"
+      },
+      "expect": {
+        "out": [],
+        "status": "4",
+        "message": "str:Invalid amount as payment",
+        "gas": "*",
+        "refund": "*"
+      }
+    },
+    {
+      "step": "scCall",
+      "txId": "buy-nft-wrong-requested-nonce",
+      "tx": {
+        "from": "address:buyer",
+        "to": "sc:my-contract",
+        "egldValue": "500",
+        "function": "buyNft",
+        "arguments": [
+          "4"
+        ],
+        "gasLimit": "20,000,000",
+        "gasPrice": "0"
+      },
+      "expect": {
+        "out": [],
+        "status": "4",
+        "message": "str:Invalid nonce or NFT was already sold",
+        "gas": "*",
+        "refund": "*"
+      }
+    },
+    {
+      "step": "scCall",
+      "txId": "buy-nft-1",
+      "tx": {
+        "from": "address:buyer",
+        "to": "sc:my-contract",
+        "egldValue": "500",
+        "function": "buyNft",
+        "arguments": [
+          "1"
+        ],
+        "gasLimit": "20,000,000",
+        "gasPrice": "0"
+      },
+      "expect": {
+        "out": [],
+        "status": "0",
+        "message": "",
+        "gas": "*",
+        "refund": "*"
+      }
+    },
+    {
+      "step": "checkState",
+      "accounts": {
+        "address:owner": {
+          "nonce": "*",
+          "balance": "500",
+          "storage": {}
+        },
+        "address:buyer": {
+          "nonce": "*",
+          "balance": "500",
+          "esdt": {
+            "str:NFT-123456": {
+              "instances": [
+                {
+                  "nonce": "1",
+                  "balance": "1",
+                  "creator": "sc:my-contract",
+                  "royalties": "5000",
+                  "uri": "str:www.mycoolnft.com/nft1.jpg",
+                  "attributes": "u64:100,000"
+                }
+              ]
+            }
+          }
+        },
+        "sc:my-contract": {
+          "nonce": "0",
+          "balance": "0",
+          "esdt": {
+            "str:NFT-123456": {
+              "instances": [
+                {
+                  "nonce": "2",
+                  "balance": "1",
+                  "creator": "sc:my-contract",
+                  "royalties": "5000",
+                  "uri": "str:www.mycoolnft.com/nft2.jpg",
+                  "attributes": "u64:100,000"
+                },
+                {
+                  "nonce": "3",
+                  "balance": "1",
+                  "creator": "sc:my-contract",
+                  "royalties": "5000",
+                  "uri": "str:www.mycoolnft.com/nft3.jpg",
+                  "attributes": "u64:100,000"
+                }
+              ],
+              "lastNonce": "3",
+              "roles": [
+                "ESDTRoleNFTCreate"
+              ]
+            }
+          },
+          "storage": {
+            "str:nftTokenId": "str:NFT-123456",
+            "str:priceTag|u64:2": {
+              "1-token": "nested:str:EGLD",
+              "2-nonce": "u64:0",
+              "3-amount": "biguint:10"
+            },
+            "str:priceTag|u64:3": {
+              "1-token": "nested:str:SEMIFUNG-123456",
+              "2-nonce": "u64:2",
+              "3-amount": "biguint:500"
+            }
+          },
+          "code": "file:../output/my-contract.wasm"
+        },
+        "+": ""
+      }
+    }
+  ]
+}

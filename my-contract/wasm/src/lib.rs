@@ -9,6 +9,7 @@ elrond_wasm_node::wasm_endpoints! {
     (
         init
         callBack
+        buyNft
         createNft
         getTokenId
         issueToken
