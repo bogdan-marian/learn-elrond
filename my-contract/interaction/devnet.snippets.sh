@@ -44,3 +44,10 @@ issueToken() {
     --proxy=${PROXY} --chain=${CHAINID} --send \
     --outfile="${MY_LOGS}/issueToken.json"
 }
+
+setLocalRoles(){
+  erdpy --verbose contract call ${ADDRESS} --recall-nonce --pem=${ALICE} \
+    --gas-limit=60000000 --function="setLocalRoles" \
+    --proxy=${PROXY} --chain=${CHAINID} --send\
+    --outfile="${MY_LOGS}/setLocalRoles.json"
+}

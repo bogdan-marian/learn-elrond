@@ -173,6 +173,21 @@ pub trait NftModule{
         }
     }
 
+    #[only_owner]
+    #[endpoint(setLocalRoles)]
+    fn set_local_roles(&self) -> SCResult<AsyncCall> {
+        self.require_token_issued()?;
+
+        Ok(self
+            .send()
+            .esdt_system_sc_proxy()
+            .set_special_roles(
+                &self.blockchain().get_sc_address(),
+                &self.nft_token_id().get(),
+                (&[EsdtLocalRole::NftCreate][..]).into_iter().cloned(),
+            )
+            .async_call())
+    }
 
     // storage
     #[view(getTokenId)]
@@ -181,5 +196,4 @@ pub trait NftModule{
 
     #[storage_mapper("priceTag")]
     fn price_tag(&self, nft_nonce: u64) -> SingleValueMapper<PriceTag<Self::Api>>;
-
 }

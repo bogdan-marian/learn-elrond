@@ -12,5 +12,6 @@ elrond_wasm_node::wasm_endpoints! {
         createNft
         getTokenId
         issueToken
+        setLocalRoles
     )
 }
