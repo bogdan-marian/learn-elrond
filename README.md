@@ -10,7 +10,7 @@ Description
 Welcome to part 2 of how to build elrond smart contracts from scratch. This tutorial is all about NFTs. 
 
 Suport me:
-Maiar Herotag: @bogdanoploeriu
+Maiar Herotag: @bogdanoloeriu
 Referral link: https://get.maiar.com/referral/u9sk4wrnt0
 
 Git start of tutorial: https://github.com/bogdan-marian/learn-elrond/commit/d5a9e46fc7042785c311e37defac317953c1d3a0
