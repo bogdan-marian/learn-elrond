@@ -1,5 +1,29 @@
 # learn-elrond
 
+## create contracts from scratch (part 2)
+Elrond NFTs smart contracts
+
+Description
+Welcome to part 2 of how to build elrond smart contracts from scratch. This tutorial is all about NFTs. 
+
+Suport me:
+Maiar Herotag: @bogdanoploeriu
+Referral link: https://get.maiar.com/referral/u9sk4wrnt0
+
+-- Contents of this video --------
+00:00 - Intro
+00:44 - Setup
+01:32 - Clean up
+02:44 - Add the nft module
+06:13 - Deploy empty contract
+14:18 - Add mandos create tests
+27:51 - Issue-token
+32:16 - Assign local roles
+47:07 - Mint some NFTs
+54:43 - Buy the NFTs
+
+
+
 ## create a smart contract from scratch (part 6L)
 
 - [] cargo new my-contract
