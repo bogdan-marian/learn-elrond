@@ -1,6 +1,9 @@
 # learn-elrond
 
 ## create contracts from scratch (part 2)
+
+Are you interested in how to create mint and sel NFTs using Elrond smart contracts? If yes the check this tutorial witch I created specially for this purpose. https://youtu.be/jpJQ-YB4NnQ
+
 Elrond NFTs smart contracts
 
 Description
@@ -9,6 +12,11 @@ Welcome to part 2 of how to build elrond smart contracts from scratch. This tuto
 Suport me:
 Maiar Herotag: @bogdanoploeriu
 Referral link: https://get.maiar.com/referral/u9sk4wrnt0
+
+Git start of tutorial: https://github.com/bogdan-marian/learn-elrond/commit/d5a9e46fc7042785c311e37defac317953c1d3a0
+Git end of tutorial: https://github.com/bogdan-marian/learn-elrond/commit/e165a6f39d793dacaf0eedbc941887407cbeb9c3
+Part 1: https://youtu.be/UYU9Gqw8ldg
+
 
 -- Contents of this video --------
 00:00 - Intro
