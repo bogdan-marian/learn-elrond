@@ -95,18 +95,18 @@ export const createSmartContractInstance = (
 
 async function getAbi(filePath: string) {
   try {
-    console.log("File path: " + filePath)
+    console.log("File path: " + filePath);
     let registry = await AbiRegistry.load({ files: [filePath] });
     return registry;
-  }catch(e){
-    console.log("We had an error AbiRegistry.load", e.message)
+  } catch (e) {
+    console.log("We had an error AbiRegistry.load", e.message);
   }
 }
 
 async function queryCrowdFund() {
-  let address = new Address(
-    "erd1qqqqqqqqqqqqqpgq6p6mr5hc3ksl0t6u72454hg6l7qnteyrd8sslxsa3d"
-  );
+  let stringAddress =
+    "erd1qqqqqqqqqqqqqpgq6p6mr5hc3ksl0t6u72454hg6l7qnteyrd8sslxsa3d";
+  let address = new Address(stringAddress);
   let proxy: ProxyProvider = new ProxyProvider(
     "https://devnet-gateway.elrond.com"
   );
@@ -119,13 +119,16 @@ async function queryCrowdFund() {
   // let values = returnData.values();
 
   // console.log(returnData);
-  let abiFile =  getAbi("./crowdfunding-esdt.abi.json");
+  let abiFile = await getAbi("./crowdfunding-esdt.abi.json");
+
+  let smartContract = createSmartContractInstance(
+    abiFile,
+    stringAddress
+  );
 
   // End of queryCrowdFund()
   let stamp = Date();
   console.log("End of query crowdfund " + stamp);
-
-  
 }
 
 async function queryChessout() {
