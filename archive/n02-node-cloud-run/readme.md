@@ -8,6 +8,7 @@
 [ts-node-dev](https://github.com/wclr/ts-node-dev)
 [good javascript query snippets](https://elrondnetwork.github.io/elrond-sdk-docs/erdjs/latest/#creating-value-transfer-transactions)
 [interact with the smart contract](https://www.julian.io/articles/elrond-erdjs.html)
+[elrond express api](https://github.com/ElrondNetwork/express-api)
 
 ## query the blockchain
 
