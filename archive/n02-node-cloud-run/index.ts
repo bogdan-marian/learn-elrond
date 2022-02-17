@@ -116,7 +116,7 @@ async function queryCrowdFund() {
     let abiRegistry = await AbiRegistry.load({
       files: ["crowdfunding-esdt.abi.json"],
     });
-    let abi = new SmartContractAbi(abiRegistry, []);
+    let abi = new SmartContractAbi(abiRegistry, [`Crowdfunding`]);
 
     let contract = new SmartContract({
       address: address,
@@ -124,6 +124,10 @@ async function queryCrowdFund() {
     });
 
     let interaction: Interaction = contract.methods.getCurrentFunds();
+
+    let queryResponse = await contract.runQuery(provider,interaction.buildQuery());
+    let response = interaction.interpretExecutionResults("What should I place here? ");
+
 
     // End of queryCrowdFund()
     let stamp = Date();
