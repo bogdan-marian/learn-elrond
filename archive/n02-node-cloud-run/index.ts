@@ -105,7 +105,7 @@ async function getAbi(filePath: string) {
 
 async function queryCrowdFund() {
   let stringAddress =
-    "erd1qqqqqqqqqqqqqpgq6p6mr5hc3ksl0t6u72454hg6l7qnteyrd8sslxsa3d";
+    "erd1qqqqqqqqqqqqqpgq5jq6srjkl3mrrvzy932fwj46j970ml4sd8ssacje4l";
   let address = new Address(stringAddress);
   let proxy: ProxyProvider = new ProxyProvider(
     "https://devnet-gateway.elrond.com"
