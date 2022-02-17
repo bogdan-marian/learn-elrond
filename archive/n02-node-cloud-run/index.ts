@@ -125,6 +125,8 @@ async function queryCrowdFund() {
     abiFile,
     stringAddress
   );
+  let currentFunds = smartContract.methods.currentFunds
+  console.log(currentFunds)
 
   // End of queryCrowdFund()
   let stamp = Date();
