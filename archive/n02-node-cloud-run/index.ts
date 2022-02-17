@@ -126,8 +126,8 @@ async function queryCrowdFund() {
     let interaction: Interaction = contract.methods.getCurrentFunds();
 
     let queryResponse = await contract.runQuery(provider,interaction.buildQuery());
-    let response = interaction.interpretExecutionResults("What should I place here? ");
-
+    let response = interaction.interpretQueryResponse(queryResponse);
+    console.log(response)
 
     // End of queryCrowdFund()
     let stamp = Date();
