@@ -14,6 +14,7 @@ import {
   NetworkConfig,
   ProxyProvider,
   SmartContract,
+  Interaction,
 } from "@elrondnetwork/erdjs";
 import {
   AbiRegistry,
@@ -104,42 +105,30 @@ async function getAbi(filePath: string) {
 }
 
 async function queryCrowdFund() {
-  let stringAddress =
-    "erd1qqqqqqqqqqqqqpgq5jq6srjkl3mrrvzy932fwj46j970ml4sd8ssacje4l";
-  let address = new Address(stringAddress);
-  let proxy: ProxyProvider = new ProxyProvider(
-    "https://devnet-gateway.elrond.com"
-  );
+  try {
+    let provider = new ProxyProvider("https://devnet-gateway.elrond.com");
+    await NetworkConfig.getDefault().sync(provider);
 
-  // const contract: SmartContract = new SmartContract({ address });
-  // const func: ContractFunction = new ContractFunction("currentFunds");
-  // const qResponse = await contract.runQuery(proxy, { func });
-  // qResponse.assertSuccess();
-  // const returnData = qResponse.returnData;
-  // let values = returnData.values();
+    let stringAddress =
+      "erd1qqqqqqqqqqqqqpgq5jq6srjkl3mrrvzy932fwj46j970ml4sd8ssacje4l";
+    let address = new Address(stringAddress);
 
-  // console.log(returnData);
-  let abiFile = await getAbi("./crowdfunding-esdt.abi.json");
+    let abiRegistry = await AbiRegistry.load({
+      files: ["crowdfunding-esdt.abi.json"],
+    });
+    let abi = new SmartContractAbi(abiRegistry, []);
 
-  let smartContract = createSmartContractInstance(
-    abiFile,
-    stringAddress
-  );
-  let currentFunds = smartContract.methods.currentFunds
-  console.log(currentFunds)
+    let contract = new SmartContract({
+      address: address,
+      abi: abi,
+    });
 
-  // End of queryCrowdFund()
-  let stamp = Date();
-  console.log("End of query crowdfund " + stamp);
-}
+    let interaction: Interaction = contract.methods.getCurrentFunds();
 
-async function queryChessout() {
-  let contract = new SmartContract({
-    address: new Address(
-      "erd1qqqqqqqqqqqqqpgqxwakt2g7u9atsnr03gqcgmhcv38pt7mkd94q6shuwt"
-    ),
-  });
-  let addressOfAlice = new Address(
-    "erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th"
-  );
+    // End of queryCrowdFund()
+    let stamp = Date();
+    console.log("End of query crowdfund " + stamp);
+  } catch (error) {
+    console.log(error);
+  }
 }
