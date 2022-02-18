@@ -16,9 +16,11 @@
           "balance": "0",
           "esdt": {
             "str:NFT-123456": {
-              "lastNonce": "0",
-              "roles": [
-                "ESDTRoleNFTCreate"
+              "instances": [
+                {
+                  "lastNonce": "0",
+                  "roles": ["ESDTRoleNFTCreate"]
+                }
               ]
             }
           },
@@ -47,10 +49,7 @@
         "gasPrice": "0"
       },
       "expect": {
-        "out": [
-          "1",
-          "1"
-        ],
+        "out": ["1", "1"],
         "status": "0",
         "message": "",
         "gas": "*",
@@ -74,10 +73,7 @@
         "gasPrice": "0"
       },
       "expect": {
-        "out": [
-          "2",
-          "2"
-        ],
+        "out": ["2", "2"],
         "status": "0",
         "message": "",
         "gas": "*",
@@ -103,10 +99,7 @@
         "gasPrice": "0"
       },
       "expect": {
-        "out": [
-          "3",
-          "3"
-        ],
+        "out": ["3", "3"],
         "status": "0",
         "message": "",
         "gas": "*",
@@ -148,9 +141,7 @@
                 }
               ],
               "lastNonce": "3",
-              "roles": [
-                "ESDTRoleNFTCreate"
-              ]
+              "roles": ["ESDTRoleNFTCreate"]
             }
           },
           "storage": {
