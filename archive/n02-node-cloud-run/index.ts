@@ -31,7 +31,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log("Hello world listening on port", port);
-  queryCrowdFund();
+  getTournamentInfo();
 });
 
 app.get("/", (req, res) => {
@@ -124,6 +124,72 @@ async function queryCrowdFund() {
     });
 
     let interaction: Interaction = contract.methods.getCurrentFunds();
+
+    let queryResponse = await contract.runQuery(provider,interaction.buildQuery());
+    let response = interaction.interpretQueryResponse(queryResponse);
+    console.log(response)
+
+    // End of queryCrowdFund()
+    let stamp = Date();
+    console.log("End of query crowdfund " + stamp);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function callGetTokenId() {
+  try {
+    let provider = new ProxyProvider("https://devnet-gateway.elrond.com");
+    await NetworkConfig.getDefault().sync(provider);
+
+    let stringAddress =
+      "erd1qqqqqqqqqqqqqpgqmn55krqdxch3x6udq5xnenzs698rfrp4d8ss635ses";
+    let address = new Address(stringAddress);
+
+    let abiRegistry = await AbiRegistry.load({
+      files: ["my-contract.abi.json"],
+    });
+    let abi = new SmartContractAbi(abiRegistry, [`MyContract`]);
+
+    let contract = new SmartContract({
+      address: address,
+      abi: abi,
+    });
+
+    let interaction: Interaction = contract.methods.getTokenId();
+
+    let queryResponse = await contract.runQuery(provider,interaction.buildQuery());
+    let response = interaction.interpretQueryResponse(queryResponse);
+    console.log(response)
+
+    // End of queryCrowdFund()
+    let stamp = Date();
+    console.log("End of query crowdfund " + stamp);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getTournamentInfo() {
+  try {
+    let provider = new ProxyProvider("https://devnet-gateway.elrond.com");
+    await NetworkConfig.getDefault().sync(provider);
+
+    let stringAddress =
+      "erd1qqqqqqqqqqqqqpgqmn55krqdxch3x6udq5xnenzs698rfrp4d8ss635ses";
+    let address = new Address(stringAddress);
+
+    let abiRegistry = await AbiRegistry.load({
+      files: ["my-contract.abi.json"],
+    });
+    let abi = new SmartContractAbi(abiRegistry, [`MyContract`]);
+
+    let contract = new SmartContract({
+      address: address,
+      abi: abi,
+    });
+
+    let interaction: Interaction = contract.methods.getTournamentInfo([BytesValue.fromUTF8("tournament-01")]);
 
     let queryResponse = await contract.runQuery(provider,interaction.buildQuery());
     let response = interaction.interpretQueryResponse(queryResponse);

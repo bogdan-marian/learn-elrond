@@ -1,0 +1,212 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.60.0-nightly",
+            "commitHash": "ec4bcaac450279b029f3480b8b8f1b82ab36a5eb",
+            "commitDate": "2022-01-15",
+            "channel": "Nightly",
+            "short": "rustc 1.60.0-nightly (ec4bcaac4 2022-01-15)"
+        },
+        "contractCrate": {
+            "name": "my-contract",
+            "version": "0.1.0"
+        },
+        "framework": {
+            "name": "elrond-wasm",
+            "version": "0.25.0"
+        }
+    },
+    "name": "MyContract",
+    "constructor": {
+        "inputs": [],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "issueToken",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "payableInTokens": [
+                "EGLD"
+            ],
+            "inputs": [
+                {
+                    "name": "token_name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "token_ticker",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setLocalRoles",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "createNft",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "royalties",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "uri",
+                    "type": "bytes"
+                },
+                {
+                    "name": "selling_price",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "opt_token_used_as_payment",
+                    "type": "optional<TokenIdentifier>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_used_as_payment_nonce",
+                    "type": "optional<u64>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getNftPrice",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "nft_nonce",
+                    "type": "u64"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "optional<multi<TokenIdentifier,u64,BigUint>>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "buyNft",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "nft_nonce",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getTokenId",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "createTournament",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "_tournament_id",
+                    "type": "bytes"
+                },
+                {
+                    "name": "_token_identifier",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "_sing_in_price",
+                    "type": "BigUint"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getTournamentInfoList",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "id_list",
+                    "type": "variadic<bytes>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "List<TournamentInfo>"
+                }
+            ]
+        },
+        {
+            "name": "getTournamentInfo",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "tournament_id",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "TournamentInfo"
+                }
+            ]
+        }
+    ],
+    "hasCallback": true,
+    "types": {
+        "TournamentInfo": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "tournament_id",
+                    "type": "bytes"
+                },
+                {
+                    "name": "token_identifier",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "sing_in_price",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "manager",
+                    "type": "Address"
+                },
+                {
+                    "name": "funds",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "participants",
+                    "type": "List<Address>"
+                }
+            ]
+        }
+    }
+}
