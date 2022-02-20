@@ -5,7 +5,7 @@ This clip explains how to deal with relatively more complex data structures.
 - define the data structures
 - persist them in the storage
 - pack data in lists as part of the smart contract response.  
-- pem files
+- abi files
 - consume data from the client-side using erdjs 
 
 Suport me:
@@ -14,6 +14,14 @@ Referral link: https://get.maiar.com/referral/u9sk4wrnt0
 
 Git commit relevant for this tutorial: https://github.com/bogdan-marian/chessout-sc-v1/tree/47d4a818128700b500e1e373f83b03256c5c2a21
 
+-- Contents of this video --------
+00:00 - Intro
+00:40 - Data structures
+02:30 - API Requests limit
+05:34 - Pack structures in lists
+14:29 - Fast demo
+19:05 - abi file
+21:42 - Decode response
 
 
 ## create contracts from scratch (part 2)
