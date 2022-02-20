@@ -1,5 +1,19 @@
 # learn-elrond
 
+## create contracts from scratch (part 3)
+This clip explains how to deal with relatively more complex data structures. 
+- define the data structures
+- persists them in the storage
+- pack then in lists as part of the smart contract response.  
+
+Suport me:
+Maiar Herotag: @bogdanoloeriu
+Referral link: https://get.maiar.com/referral/u9sk4wrnt0
+
+Git commit relevant for this tutorial: https://github.com/bogdan-marian/chessout-sc-v1/tree/47d4a818128700b500e1e373f83b03256c5c2a21
+
+
+
 ## create contracts from scratch (part 2)
 
 Are you interested in how to create mint and sel NFTs using Elrond smart contracts? If yes the check this tutorial witch I created specially for this purpose. https://youtu.be/jpJQ-YB4NnQ
