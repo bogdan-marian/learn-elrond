@@ -1,10 +1,12 @@
 # learn-elrond
 
-## create contracts from scratch (part 3)
+## Complex data structures and pem files (from scratch part3)
 This clip explains how to deal with relatively more complex data structures. 
 - define the data structures
-- persists them in the storage
-- pack then in lists as part of the smart contract response.  
+- persist them in the storage
+- pack data in lists as part of the smart contract response.  
+- pem files
+- consume data from the client-side using erdjs 
 
 Suport me:
 Maiar Herotag: @bogdanoloeriu
