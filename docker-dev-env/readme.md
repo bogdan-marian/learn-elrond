@@ -6,7 +6,9 @@ git clone https://github.com/bogdan-marian/learn-elrond.git
 cd learn-elrond/docker-dev-env
 docker build -t my-elrond-container .
 
-# at the moment this will not get build because of errors but next step should be
 docker run -it my-elrond-container bash
-# happy coding
+
+git clone https://github.com/bogdan-marian/learn-elrond.git
+cd learn-elrond/my-contract/
+erdpy contract build
 ```
