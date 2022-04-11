@@ -25,8 +25,8 @@ WORKDIR /home/ubuntu
 RUN python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')"
 
 # rust
-RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
-RUN echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
+# RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+# RUN echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
 
 RUN wget -O erdpy-up.py https://raw.githubusercontent.com/ElrondNetwork/elrond-sdk-erdpy/master/erdpy-up.py
 RUN python3 erdpy-up.py

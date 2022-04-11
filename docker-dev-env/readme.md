@@ -10,5 +10,7 @@ docker run -it my-elrond-container bash
 
 git clone https://github.com/bogdan-marian/learn-elrond.git
 cd learn-elrond/my-contract/
+
+#this step allways fails
 erdpy contract build
 ```
