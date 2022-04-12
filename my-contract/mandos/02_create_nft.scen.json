@@ -15,14 +15,14 @@
           "nonce": "0",
           "balance": "0",
           "esdt": {
-            "str:NFT-123456": {
-              "instances": [
+            "str:NFT-123456":
+
                 {
                   "lastNonce": "0",
-                  "roles": ["ESDTRoleNFTCreate"]
+                  "roles": ["ESDTRoleNFTCreate"],
+                  "instances": []
                 }
-              ]
-            }
+
           },
           "storage": {
             "str:nftTokenId": "str:NFT-123456"
@@ -120,7 +120,7 @@
                   "balance": "1",
                   "creator": "sc:my-contract",
                   "royalties": "5000",
-                  "uri": "str:www.mycoolnft.com/nft1.jpg",
+                  "uri": ["str:www.mycoolnft.com/nft1.jpg"],
                   "attributes": "u64:100,000"
                 },
                 {
@@ -128,7 +128,7 @@
                   "balance": "1",
                   "creator": "sc:my-contract",
                   "royalties": "5000",
-                  "uri": "str:www.mycoolnft.com/nft2.jpg",
+                  "uri": ["str:www.mycoolnft.com/nft2.jpg"],
                   "attributes": "u64:100,000"
                 },
                 {
@@ -136,7 +136,7 @@
                   "balance": "1",
                   "creator": "sc:my-contract",
                   "royalties": "5000",
-                  "uri": "str:www.mycoolnft.com/nft3.jpg",
+                  "uri": ["str:www.mycoolnft.com/nft3.jpg"],
                   "attributes": "u64:100,000"
                 }
               ],
