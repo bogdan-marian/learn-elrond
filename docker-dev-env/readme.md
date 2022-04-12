@@ -13,4 +13,9 @@ cd learn-elrond/my-contract/
 
 #build the contract
 erdpy contract build
+. interaction/devnet.snippets.sh
+
+# this one will return empty Smart contract address
+deploy
+
 ```
