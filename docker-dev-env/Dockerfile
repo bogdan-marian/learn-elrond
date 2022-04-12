@@ -7,6 +7,7 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl sudo gcc gcc-multilib mono-mcs\
        git libncurses5 wget ca-certificates fontconfig locales python3 python3-pip python3-venv\
+       vim xxd bc\
     && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
