@@ -8,9 +8,6 @@ pub trait ChessoutNft  {
     fn init(&self) {
     }
 
-
-
-
     // storage
     #[view(getTokenId)]
     #[storage_mapper("nftTokenId")]
