@@ -1,0 +1,17 @@
+[package]
+name = "chessout-nft"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path="src/chessout-nft.rs"
+
+[dependencies]
+
+[dependencies.elrond-wasm]
+version = "0.30.0"
+
+[dev-dependencies.elrond-wasm-debug]
+version = "0.30.0"

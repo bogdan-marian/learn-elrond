@@ -1,0 +1,15 @@
+.idea
+.vscode
+/target
+
+# sudjested my other sc tempaltes.
+*/target/
+
+# The erdpy output
+output
+/wallets/users/testnet-bogdan.pem
+/wallets/users/alice.pem
+
+# interaction logs
+interaction-logs
+erdpy.data-storage.json
