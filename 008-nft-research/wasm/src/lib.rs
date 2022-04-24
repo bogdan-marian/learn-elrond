@@ -7,8 +7,8 @@
 elrond_wasm_node::wasm_endpoints! {
     chessout_nft
     (
+        callBack
         getTokenId
+        issueToken
     )
 }
-
-elrond_wasm_node::wasm_empty_callback! {}

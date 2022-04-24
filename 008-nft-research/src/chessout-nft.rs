@@ -17,10 +17,10 @@ pub trait ChessoutNft  {
         #[payment] issue_cost: BigUint,
         token_name: ManagedBuffer,
         token_ticker: ManagedBuffer,
-    ) -> SCResult<AsyncCall> {
+    )  {
         require!(self.nft_token_id().is_empty(), "Token already issued");
 
-        Ok(self
+        self
             .send()
             .esdt_system_sc_proxy()
             .issue_non_fungible(
@@ -37,7 +37,7 @@ pub trait ChessoutNft  {
                 },
             )
             .async_call()
-            .with_callback(self.callbacks().issue_callback()))
+            .with_callback(self.callbacks().issue_callback()).call_and_exit();
     }
 
     #[callback]
