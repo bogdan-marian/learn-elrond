@@ -10,5 +10,6 @@ elrond_wasm_node::wasm_endpoints! {
         callBack
         getTokenId
         issueToken
+        setLocalRoles
     )
 }

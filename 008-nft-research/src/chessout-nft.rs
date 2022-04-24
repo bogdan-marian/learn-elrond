@@ -57,6 +57,22 @@ pub trait ChessoutNft  {
         }
     }
 
+    #[only_owner]
+    #[endpoint(setLocalRoles)]
+    fn set_local_roles(&self) {
+        require!(!self.nft_token_id().is_empty(), "Token not issued");
+
+        self.send()
+            .esdt_system_sc_proxy()
+            .set_special_roles(
+                &self.blockchain().get_sc_address(),
+                &self.nft_token_id().get(),
+                [EsdtLocalRole::NftCreate][..].iter().cloned(),
+            )
+            .async_call()
+            .call_and_exit()
+    }
+
     // storage
     #[view(getTokenId)]
     #[storage_mapper("nftTokenId")]
