@@ -1,6 +1,24 @@
 #![no_std]
 
 elrond_wasm::imports!();
+elrond_wasm::derive_imports!();
+
+use elrond_wasm::elrond_codec::TopEncode;
+
+const NFT_AMOUNT: u32 = 1;
+const ROYALTIES_MAX: u32 = 10_000;
+
+#[derive(TypeAbi, TopEncode, TopDecode)]
+pub struct PriceTag<M: ManagedTypeApi> {
+    pub token: TokenIdentifier<M>,
+    pub nonce: u64,
+    pub amount: BigUint<M>,
+}
+
+#[derive(TypeAbi, TopEncode, TopDecode)]
+pub struct ExampleAttributes {
+    pub creation_timestamp: u64,
+}
 
 #[elrond_wasm::derive::contract]
 pub trait ChessoutNft  {
@@ -77,5 +95,9 @@ pub trait ChessoutNft  {
     #[view(getTokenId)]
     #[storage_mapper("nftTokenId")]
     fn nft_token_id(&self) -> SingleValueMapper<TokenIdentifier>;
+
+
+    #[storage_mapper("priceTag")]
+    fn price_tag(&self, nft_nonce: u64) -> SingleValueMapper<PriceTag<Self::Api>>;
 
 }
