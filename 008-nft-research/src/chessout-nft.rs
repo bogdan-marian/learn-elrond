@@ -1,9 +1,9 @@
 #![no_std]
 
+use elrond_wasm::elrond_codec::TopEncode;
+
 elrond_wasm::imports!();
 elrond_wasm::derive_imports!();
-
-use elrond_wasm::elrond_codec::TopEncode;
 
 const NFT_AMOUNT: u32 = 1;
 const ROYALTIES_MAX: u32 = 10_000;
@@ -20,11 +20,13 @@ pub struct ExampleAttributes {
     pub creation_timestamp: u64,
 }
 
-
 #[elrond_wasm::derive::contract]
-pub trait ChessoutNft  {
+pub trait ChessoutNft {
     #[init]
-    fn init(&self) {
+    fn init(&self,
+            global_price: BigUint) {
+        require!(global_price > 0, "Global price must be positive value");
+        self.global_price().set(global_price);
     }
 
 
@@ -36,7 +38,7 @@ pub trait ChessoutNft  {
         #[payment] issue_cost: BigUint,
         token_name: ManagedBuffer,
         token_ticker: ManagedBuffer,
-    )  {
+    ) {
         require!(self.nft_token_id().is_empty(), "Token already issued");
 
         self
@@ -64,7 +66,7 @@ pub trait ChessoutNft  {
         match result {
             ManagedAsyncCallResult::Ok(token_id) => {
                 self.nft_token_id().set(&token_id);
-            },
+            }
             ManagedAsyncCallResult::Err(_) => {
                 let caller = self.blockchain().get_owner_address();
                 let (returned_tokens, token_id) = self.call_value().payment_token_pair();
@@ -72,9 +74,10 @@ pub trait ChessoutNft  {
                     self.send()
                         .direct(&caller, &token_id, 0, &returned_tokens, &[]);
                 }
-            },
+            }
         }
     }
+
 
     #[only_owner]
     #[endpoint(setLocalRoles)]
@@ -92,6 +95,50 @@ pub trait ChessoutNft  {
             .call_and_exit()
     }
 
+    #[allow(clippy::too_many_arguments)]
+    #[allow(clippy::redundant_closure)]
+    #[only_owner]
+    #[endpoint(createNft)]
+    fn create_nft(
+        &self,
+        name: ManagedBuffer,
+        royalties: BigUint,
+        uri: ManagedBuffer,
+        selling_price: BigUint,
+        #[var_args] opt_token_used_as_payment: OptionalValue<TokenIdentifier>,
+        #[var_args] opt_token_used_as_payment_nonce: OptionalValue<u64>,
+    ) {
+        let token_used_as_payment = match opt_token_used_as_payment {
+            OptionalValue::Some(token) => token,
+            OptionalValue::None => TokenIdentifier::egld(),
+        };
+        require!(
+            token_used_as_payment.is_egld() || token_used_as_payment.is_valid_esdt_identifier(),
+            "Invalid token_used_as_payment arg, not a valid token ID"
+        );
+
+        let token_used_as_payment_nonce = if token_used_as_payment.is_egld() {
+            0
+        } else {
+            match opt_token_used_as_payment_nonce {
+                OptionalValue::Some(nonce) => nonce,
+                OptionalValue::None => 0,
+            }
+        };
+
+        let attributes = ExampleAttributes {
+            creation_timestamp: self.blockchain().get_block_timestamp(),
+        };
+        self.create_nft_with_attributes(
+            name,
+            royalties,
+            attributes,
+            uri,
+            selling_price,
+            token_used_as_payment,
+            token_used_as_payment_nonce,
+        );
+    }
 
     #[allow(clippy::too_many_arguments)]
     fn create_nft_with_attributes<T: TopEncode>(
@@ -138,13 +185,68 @@ pub trait ChessoutNft  {
         nft_nonce
     }
 
+    #[payable("*")]
+    #[endpoint(buyNft)]
+    fn buy_nft(&self, nft_nonce: u64) {
+        let payment: EsdtTokenPayment<Self::Api> = self.call_value().payment();
+
+        require!(!self.nft_token_id().is_empty(), "Token not issued");
+        require!(
+            !self.price_tag(nft_nonce).is_empty(),
+            "Invalid nonce or NFT was already sold"
+        );
+        require!(payment.token_identifier.is_egld(),"Only EGLD");
+        let price_tag = self.price_tag(nft_nonce).get();
+        require!(
+            payment.token_identifier == price_tag.token,
+            "Invalid token used as payment"
+        );
+        require!(
+            payment.token_nonce == price_tag.nonce,
+            "Invalid nonce for payment token"
+        );
+        let g_price = self.global_price().get();
+        require!(
+            payment.amount == g_price,
+            "Invalid amount as payment"
+        );
+        /*require!(
+            payment.amount == price_tag.amount,
+            "Invalid amount as payment"
+        );*/
+
+        self.price_tag(nft_nonce).clear();
+
+        let nft_token_id = self.nft_token_id().get();
+        let caller = self.blockchain().get_caller();
+        self.send().direct(
+            &caller,
+            &nft_token_id,
+            nft_nonce,
+            &BigUint::from(NFT_AMOUNT),
+            &[],
+        );
+
+        let owner = self.blockchain().get_owner_address();
+        self.send().direct(
+            &owner,
+            &payment.token_identifier,
+            payment.token_nonce,
+            &payment.amount,
+            &[],
+        );
+    }
+
+
     // storage
     #[view(getTokenId)]
     #[storage_mapper("nftTokenId")]
     fn nft_token_id(&self) -> SingleValueMapper<TokenIdentifier>;
 
-
     #[storage_mapper("priceTag")]
     fn price_tag(&self, nft_nonce: u64) -> SingleValueMapper<PriceTag<Self::Api>>;
 
+    #[view(getGlobalPrice)]
+    #[storage_mapper("globalPrice")]
+    fn global_price(&self) -> SingleValueMapper<BigUint>;
 }
